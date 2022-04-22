@@ -7,7 +7,7 @@ if( have_rows('image_credits') ): ?>
 <div class="image-credits">
   <h4 class="image-credits__heading">Image Credits</h4>
   <ul class="image-credits__list list-unstyled">
-
+  
   <?php
   // Loop through rows.
   while( have_rows('image_credits') ) : the_row();
