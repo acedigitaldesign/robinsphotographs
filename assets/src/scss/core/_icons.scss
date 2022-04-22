@@ -1,0 +1,191 @@
+/******************************************
+Icons
+******************************************/
+@font-face {
+  font-family: 'ace-icons';
+  // src: font-path('ace-icons', 'ace-icons.eot');
+  // src: font-path('ace-icons', 'ace-icons.eot', 'embedded-opentype'),
+      //  font-path('ace-icons', 'ace-icons.ttf', 'truetype'),
+      //  font-path('ace-icons', 'ace-icons.woff', 'woff'),
+      //  font-path('ace-icons', 'ace-icons.svg', 'svg');
+  src: font-path('ace-icons', 'ace-icons.woff', 'woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  // font-display: swap; /* Read next point */  
+  // unicode-range: U+000-5FF; /* Download only latin glyphs */  
+}
+
+
+
+$icon-map: (
+  arrow-circle-full-right: "\e900",
+  envelope-full: "\e901",
+  phone-full: "\e902",
+  triangle-pointer-right: "\e903",
+  arrow-long-right: "\e904",
+  chevron-thin-right: "\e905",
+  facebook: "\e906",
+  twitter: "\e907",
+  youtube: "\e908",
+  whatsapp-full: "\e909",
+  instagram: "\e90a",
+  pinterest-full: "\e90b",
+  dash: "\e90c",
+  tick-thin: "\e90d",
+  exclamation: "\e90e",
+  cross-thin: "\e90f",
+  burger-menu: "\e910",
+  lock-full: "\e911",
+  shopping-trolley: "\e912",
+  star-rounded-full: "\e913",
+  star-rounded-outline: "\e914",
+  info: "\e915",
+  open-quote: "\e916",
+  arrow-clockwise: "\e917",
+  shopping-cart-empty: "\e918",
+  envelope-outline: "\e919",
+  exclamation-outline: "\e91a",
+  lightbulb-on: "\e91b"
+);
+
+
+// Icons
+// NB. icon-list styles in lists.scss
+@each $name, $hex in $icon-map {
+  .icon-#{$name}:not(.icon-before):not(.icon-list) {
+    &:after {
+      display: inline-block; // <- Must be inline-block rather than container set to flex so can prevent icon having underline
+      position: relative;
+      vertical-align: middle;
+      // line-height: normal;
+      @include icon(#{$name}, $vertical-adjust: false);
+      font-size: .9em;
+      font-weight: 400;
+    }
+  }
+  .icon-#{$name}.icon-before:not(.icon-list) {
+    &:before {
+      display: inline-block; // <- Must be inline-block rather than container set to flex so can prevent icon having underline
+      position: relative;
+      vertical-align: middle;
+      // line-height: normal;
+      @include icon(#{$name}, $vertical-adjust: false);
+      font-size: .9em;
+      font-weight: 400;
+    }
+  }
+}
+
+[class*="icon-"].icon-only {
+  &:before,
+  &:after {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
+
+$icon-margin-spacer: 0.1em;
+
+// Icon links (using a-tag selector so don't have to add yet another class, eg. icon-link)
+[class*="icon-"] {
+  &:after {
+    margin-left: .6em;
+  }
+  // Finetune space between icon and any text
+  @for $i from 0 through 6 {
+    &.icon-ml-#{$i}:after { margin-left: $icon-margin-spacer * $i; }
+  }
+
+  &.icon-before {
+    &:before {
+      margin-right: .6em;
+    }
+    // Finetune space between icon and any text
+    @for $i from 0 through 8 {
+      &.icon-mr-#{$i}:before { margin-right: $icon-margin-spacer * $i; }
+    }
+  }
+  // IE11 Fix: To prevent underline on icon links, first has to be set and then can be overridden with 'none'.
+  &:hover:after {
+    text-decoration:underline;
+  }
+  &:hover:after {
+    text-decoration:none;
+  }
+}
+
+
+// Icon nudge
+// - used mainly for icon links and buttons help align better with text
+// - using flex align-center would render this unncessary however must use inline-block in order to be able to stop underlines on pseudo elements on hover...
+$relative-positioners: (top, right, bottom, left);
+$icon-nudge-spacer: 0.05em;
+
+@each $position in $relative-positioners {
+  @for $i from 0 through 8 {
+    .icon-nudge-#{$position}-#{$i}:not(.icon-before):not(.icon-list) {
+      &:after {
+        #{$position}: 1 * ($icon-nudge-spacer * $i); 
+      }
+    }
+    // Negative positioning
+    .icon-nudge-#{$position}-n#{$i}:not(.icon-before):not(.icon-list) {
+      &:after {
+        #{$position}: -1 * ($icon-nudge-spacer * $i); 
+      }
+    }
+    .icon-nudge-#{$position}-#{$i}.icon-before:not(.icon-list) {
+      &:before {
+        #{$position}: 1 * ($icon-nudge-spacer * $i); 
+      }
+    }
+    // Negative positioning
+    .icon-nudge-#{$position}-n#{$i}.icon-before:not(.icon-list) {
+      &:before {
+        #{$position}: -1 * ($icon-nudge-spacer * $i); 
+      }
+    }
+  }
+}
+
+
+// Icon size
+// - fine tune the size of icons, often used when on links
+@for $i from 1 through 10 {
+  .icon-size-#{$i}:not(.icon-before):not(.icon-list) {
+    &:after {
+      font-size: .1em * $i; 
+    }
+  }
+  .icon-size-#{$i}.icon-before:not(.icon-list) {
+    &:before {
+      font-size: .1em * $i; 
+    }
+  }
+}
+
+
+
+
+// Rotations
+$rotation-degrees: (
+  '90' : 90deg,
+  'n90' : -90deg,
+  '180' : 180deg,
+);
+
+@each $class, $degrees in $rotation-degrees {
+  .icon-rotate-#{$class}:not(.icon-before):not(.icon-list) {
+    &:after {
+      transform: rotate($degrees);
+    }
+  }
+  .icon-rotate-#{$class}.icon-before:not(.icon-list) {
+    &:before {
+      transform: rotate($degrees);
+    }
+  }
+}

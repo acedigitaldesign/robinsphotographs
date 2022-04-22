@@ -1,0 +1,84 @@
+/******************************************
+Note
+// eg. Tips and Alert boxes
+******************************************/
+.note {
+  font-size: .95em;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: .5em;
+  border-color: #e1e1e1;
+  width: 100%;
+  max-width: 600px;
+  padding: .9em 1.2em;
+  position: relative;
+  margin-bottom: 1.6rem;
+
+  &.is-alert {
+    $color__alert: #FBE0AB;
+    color: darken($color__alert, 60%);
+    background-color: rgba($color__alert, .15);
+    border-color: $color__alert;
+    padding-left: 4em;
+    &:before {
+      @include icon(exclamation-outline, 2.5em, false);
+      color: $color__alert;
+      line-height: 1;
+      position: absolute;
+      top: 0.45em;
+      left: 0.35em;
+    }
+  }
+
+  &.is-tip {
+    $color__alert: #A2D1EF;
+    color: darken($color__alert, 50%);
+    background-color: rgba($color__alert, .1);
+    border-color: lighten($color__alert, 8%);
+    padding-left: 4em;
+    &:before {
+      @include icon(lightbulb-on, 2.7em, false);
+      color: $color__alert;
+      line-height: 1;
+      position: absolute;
+      top: 0.4em;
+      left: 0.3em;
+    }
+  }
+  // qi = Quite Interesting 
+  // Currently same styling as Tip but made it it's own class just incase ever want to differentiate the two...
+  &.is-qi {
+    $color__alert: #A2D1EF;
+    color: darken($color__alert, 50%);
+    background-color: rgba($color__alert, .1);
+    border-color: lighten($color__alert, 8%);
+    padding-left: 4em;
+    &:before {
+      @include icon(lightbulb-on, 2.7em, false);
+      color: $color__alert;
+      line-height: 1;
+      position: absolute;
+      top: 0.4em;
+      left: 0.3em;
+    }
+  }
+}
+
+@include media-breakpoint-only(xs) {
+  .note {
+    padding-left: 1.2em !important;
+
+    &.is-alert, &.is-tip, &.is-qi {
+      &:before {
+        line-height: 1;
+        position: relative;
+        top: 4px;
+        left: 0;
+        float: left;
+        padding-right: .3em;
+        // font-size: 1.6em !important;
+      }
+    }
+ 
+  }
+}

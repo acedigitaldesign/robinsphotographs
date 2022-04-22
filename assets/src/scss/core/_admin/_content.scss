@@ -1,0 +1,95 @@
+/******************************************
+Content
+******************************************/
+// Content box
+// Sets source and status sections side by side
+#acf-group_5f049fa5e0309 {
+  & > .inside {
+    display: flex;
+  }
+}
+
+
+// Content status
+.content-status__message {
+  padding: 1em;
+  border-radius: 5px;
+  
+  &[data-content-status-message="success"] { 
+    background-color: #f6fde8;
+    color: #69a703;
+    border: 1px solid #c7eb8c;
+    border-left-width: 6px;
+
+    & > .content-status__message-description {
+      color: #a0b879;
+    }
+
+    & > .content-status__message-title::before {
+      @include icon('tick-thin', 1em, false);
+      // font-family: 'ace-icons';
+      // content: "\e90e";
+      // // color: #a1d054;
+      opacity: .87;
+      top: 1px;
+      margin-right: 8px;
+    }
+  }
+
+  &[data-content-status-message="error"] {
+    background-color: #fde8e8;
+    color: #e11212;
+    border: 1px solid #fdb0b0;
+    border-left-width: 6px;
+
+    & > .content-status__message-description {
+      color: #ed8a8a;
+    }
+
+    & > .content-status__message-title::before {
+      content: "\e90e";
+      margin-right: 5px;
+      top: 1px;
+    }
+  }
+
+  &[data-content-status-message="pending-uid"] {
+    background-color: #fdf5e8;
+    color: #b6810f;
+    border: 1px solid #fddeb0;
+    border-left-width: 6px;
+    padding-bottom: .8em;
+
+    & > .content-status__message-description {
+      color: #d8af73;
+    }
+
+    // & > .content-status__message-title::before {
+    //   content: "\e935";
+    //   margin-right: 5px;
+    //   top: 1px;
+    // }
+  }
+}
+
+.content-status__message-title {
+  margin-bottom: 4px;
+  font-weight: 500;
+
+  &::before {
+    font-family: 'ace-icons';
+    position: relative;
+  }
+}
+.content-status__message-description {
+  font-size: 10px;
+}
+.content-status__verification-btn {
+  margin-top: 10px !important;
+}
+#acf-group_5f049fa5e0309 [data-name="content_source"] {
+  min-width: 134px;
+}
+.content-status {
+  width: 100%;
+}

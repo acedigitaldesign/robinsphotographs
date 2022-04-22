@@ -1,0 +1,22 @@
+/******************************************
+Badges
+******************************************/
+.badge {
+  border: 1px solid #F5BF1C;
+  border-radius: 5px;
+  color: #F5BF1C;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 0.4em 1em;
+  width: auto;
+  display: inline-block;
+  text-transform: uppercase;
+
+  &.is-full {
+    background-color: #F5BF1C;
+    color: white;
+  }
+  &.is-small {
+    padding: 0.2em .8em;
+  }
+}

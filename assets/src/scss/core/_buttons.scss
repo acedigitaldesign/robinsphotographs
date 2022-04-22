@@ -1,0 +1,163 @@
+/******************************************
+Buttons
+******************************************/
+.button {
+  display: inline-block;
+  font-family: $font-family__buttons;
+  font-weight: 700;
+  border: 0;
+  padding: $padding__button;
+  font-size: $font-size__button;
+  line-height: 1.2;
+  min-width: 100px;
+  border-radius: $border-radius__button;
+  text-decoration: none;
+  transition: all 150ms;
+  vertical-align: middle;
+  text-align: center;
+  transition: all 150ms;
+  min-width: 8em;
+  will-change: opacity; // <- Smoother opacity transition in Chrome
+  @include link-unstyled;
+}
+.button-primary {
+  background-color: $color__primary;
+  color: #ffffff;
+  opacity: 1;
+
+  &:visited,
+  &:link,
+  &:focus {
+    color: #ffffff;
+  }
+
+  &:hover,
+  &:active {
+    color: #ffffff;
+    opacity: 1;
+    cursor: pointer;
+    background-color: darken($color__primary, 8%);
+  }
+}
+.button-light {
+  background-color: $color__white;
+  color: $color__dark;
+  opacity: 1;
+
+  &:visited,
+  &:link,
+  &:focus {
+    color: $color__dark;
+  }
+
+  &:hover,
+  &:active {
+    color: $color__dark;
+    opacity: 1;
+    cursor: pointer;
+    background-color: darken($color__white, 15%);
+  }
+}
+.button-dark {
+  background-color: $color__dark;
+  color: $color__white;
+  opacity: 1;
+
+  &:visited,
+  &:link,
+  &:focus {
+    color: $color__white;
+  }
+
+  &:hover,
+  &:active {
+    color: $color__white;
+    opacity: 1;
+    cursor: pointer;
+    background-color: darken($color__dark, 8%);
+  }
+}
+.button-full {
+  width: 100%;
+}
+.button-small {
+  font-size: .95em;
+}
+// .button-large {
+//   font-size: 1.2em;
+// }
+.button-outline-primary {
+  background-color: rgba($color__primary, 0);
+  color: $color__primary;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color__primary;
+  opacity: 1;
+
+  &:visited,
+  &:link,
+  &:focus {
+    color: $color__primary;
+  }
+
+  &:hover,
+  &:active {
+    color: #ffffff;
+    opacity: 1;
+    cursor: pointer;
+    background-color: $color__primary;
+  }
+  // color: $color__primary;
+  // border-color: $color__primary;
+  // background-color: rgba($color__primary, 0);
+}
+.button-outline-light {
+  background-color: rgba($color__light, 0);
+  color: $color__light;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color__light;
+  opacity: 1;
+
+  &:visited,
+  &:link,
+  &:focus {
+    color: $color__light;
+  }
+
+  &:hover,
+  &:active {
+    color: $color__dark;
+    opacity: 1;
+    cursor: pointer;
+    background-color: $color__light;
+  }
+  // color: $color__primary;
+  // border-color: $color__primary;
+  // background-color: rgba($color__primary, 0);
+}
+
+// Targets non-hover devices (ie. mobile devices)
+@media (hover: none) {
+  .button {
+    &:hover,
+    &:active {
+      opacity: 1;
+    }
+  }
+}
+
+
+// /******************************************
+// Icon Buttons
+// ******************************************/
+// .button.icon {
+//   &:after {
+//     margin-left: .5em;
+//   }
+// }
+// .button.icon.icon-before {
+//   &:before {
+//     margin-right: .5em;
+//   }
+// }

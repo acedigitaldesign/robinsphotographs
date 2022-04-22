@@ -1,0 +1,122 @@
+.footnotes-credits {
+  margin-bottom: .5em;
+  
+  & li {
+    list-style: none;
+
+  }
+  & li:last-child {
+    margin-bottom: 0; // smoother opening transtion
+  }
+  &[data-accordion="open"] {
+    margin-bottom: 1.6rem; // maintain visual spacing when open between footnotes-credits and subseqent elements (eg. share buttons)
+    // not set internally as that makes for a 'jumpy' transition
+  }
+}
+.footnotes + .image-credits {
+  margin-top: 1.5rem;
+}
+.footnotes__heading, .image-credits__heading {
+  margin-bottom: .3em;
+  font-size: 16px;
+}
+.footnotes__item, .image-credits__item {
+  font-size: 16px;
+  line-height: 1.5;
+  font-style: italic;
+}
+.footnote__marker {
+  font-size: 14px;
+  position: relative;
+  top: -1.5px;
+}
+.footnotes-credits__toggle {
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: inline-block;
+  &:after {
+    position: static;
+    display: inline-block;
+    margin-left: 1em;
+    opacity: .8;
+  }
+}
+
+.popover-container {
+  display: block;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  width: 600px;
+  max-width: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  // top: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.popover {
+  padding: .6em .9em;
+  display: block;
+  position: relative;
+  // min-height: 360px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  @include box-shadow($blur: 1em);
+  opacity: 0;
+  overflow: hidden;
+  z-index: 0;
+  will-change: opacity, transform; // <- Smoother opacity transition in Chrome
+  pointer-events: none;
+  transform: translateY(10%);
+  transform: translate3d(0, 10%, 0);
+  transition: opacity 300ms; // <-fallback for Opera mini, doesn't support transform
+  transition: transform 300ms, opacity 300ms;
+
+  &[data-active="true"] {
+    opacity: 1;
+    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
+    pointer-events: auto;
+    z-index: 10;
+    // visibility: visible;
+  }
+
+  .footnote__marker {
+    pointer-events: none;
+    a {
+      color: #a7a4a4;
+    }
+  }
+}
+.footnote__source {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.overlay.is-footnote-overlay {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+// .popover__pointer {
+//   position: absolute;
+//   z-index: -1;
+//   box-sizing: border-box;
+//   margin-left: -0.65em;
+//   width: 1.3em;
+//   height: 1.3em;
+//   transform: rotate(45deg);
+//   background: #ffffff;
+//   // box-shadow: 0 0 8px rgb(0 0 0 / 30%);
+//   border-top-left-radius: 3px;
+//   top: -0.65em;
+// }
+// @include media-breakpoint-only(xs) {
+//   .footnotes-credits {
+//     & li:not(:last-child) {
+//       margin-bottom: 1em;
+//     }
+//   }
+// }

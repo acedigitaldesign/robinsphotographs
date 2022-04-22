@@ -1,0 +1,49 @@
+/******************************************
+Admin Loaders
+******************************************/
+// .-is-loading {
+//   pointer-events: none !important;
+// }
+[data-loading="true"] {
+  pointer-events: none !important;
+}
+.loader {
+	position: absolute;
+	z-index: 100;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none; // <- When loader appended, jQuery fades it in... See: loaders.js
+
+  &.-small {
+    font-size: .2rem;
+    // top: calc(50% - 1.2rem);
+
+    & .loader__spinner {
+      border: 1.2em solid #b7c1d7;
+      border-left-color: #868ba9;
+    }
+  }
+}
+
+.loader__spinner,
+.loader__spinner:after {
+  border-radius: 50%;
+  width: 8em;
+  height: 8em;
+}
+.loader__spinner {
+	text-indent: -9999em;
+	animation: spinny .75s infinite linear;
+	opacity: .5;
+}
+@keyframes spinny {
+  0% {
+    // -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    // -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

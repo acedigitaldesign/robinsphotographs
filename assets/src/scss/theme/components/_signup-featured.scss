@@ -1,0 +1,41 @@
+.signup-featured {
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+
+  & p {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1em;
+  }
+  &:before {
+    @include icon (envelope-outline, 12em, false);
+    opacity: .05;
+    position: absolute;
+    right: 0.1em;
+    bottom: -0.6em;
+
+  }
+}
+@include media-breakpoint-down(m) {
+  .signup-featured {
+    &:before {
+      right: -0.3em;
+      // bottom: -0.6em;
+    }
+    & p {
+      font-size: 1em;
+    }
+  }
+}
+@include custom-breakpoint($max: 450px) {
+  .signup-featured {
+    &:before {
+      content: "";
+      // right: -0.3em;
+      // bottom: -0.6em;
+    }
+  }
+}

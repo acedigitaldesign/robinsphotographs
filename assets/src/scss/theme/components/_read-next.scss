@@ -1,0 +1,96 @@
+/******************************************
+Read Next
+- at bottom of posts
+******************************************/
+.read-next {
+  padding-left: 1.4em;
+  border-left: 1px solid #D8E7FF;
+  margin-bottom: 2rem;
+  font-size: .9rem;
+}
+.read-next__heading {
+  margin-bottom: .4em;
+  font-size: .9em;
+  position: relative;
+  text-transform: uppercase;
+  color: #B1BFCA;
+  font-weight: 700;
+  // margin-top: 3rem;
+
+  // &:before {
+  //   top: -1.4rem;
+  //   content: "";
+  //   position: absolute;
+  //   background-repeat: no-repeat;
+  //   width:50px;
+  //   height: 4px;
+  //   // top: -1.4rem;
+  //   left: 0;
+  //   background-image: inline-svg('<svg width="50" height="4" viewBox="0 0 51 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;"><path d="M0.148,1.926l49.852,0" style="fill:none;stroke:' + $color__separator + ';stroke-width:3.5px;"/></svg>');
+  // }
+}
+.read-next__item {
+  line-height: 1.6;
+  margin-bottom: .6em;
+  position: relative;
+  // display: flex;
+  // word-wrap: break-word;         /* All browsers since IE 5.5+ */
+  // overflow-wrap: break-word;     /* Renamed property in CSS3 draft spec */
+
+  & > a {
+  @include link(
+    $color: $color__primary,
+    $decoration: underline,
+    $hover-color: $color__link-hover
+  );
+  position: relative;
+  padding-left: 1.6em;
+  display: table-cell; // <- table-cell instead of block so doesn't wrap under icon AND so doesn't spread 100% across container making link clickable on empty space rather than just the text (like display: block does)
+
+}
+  & > a:before {
+    // @include icon('dash', .6em, false);
+    @include icon('open-book-outline', 1em, false);
+    // color: #B8D1F9;
+    color: #B1BFCA;
+    margin-right: .6em;
+    display: inline-block;
+    position: absolute;
+    top: .1em;
+    left: 0;
+    text-decoration: underline; // <- IE Fix: To stop underline on :before, 'underline' needs to be initially set here and then the same rule duplicated below but set to none... I KNOW!
+  }
+  & > a:before {
+    text-decoration: none; // <- IE Fix: See note above...
+  }
+}
+.read-next__all-articles-link {
+  @include link(
+    $color: #879DAF,
+    $decoration: none,
+    $icon: 'arrow-long-right'
+  );
+}
+
+@include custom-breakpoint($min: 1300px) {
+  .read-next {
+    position: absolute;
+    left: 100%;
+    width: 300px;
+    margin-left: 2rem;
+    top: -400px;
+  }
+}
+// Narrow it slightly as screen gets smaller
+@include custom-breakpoint($min: 1300px, $max: 1440px) {
+  .read-next {
+    width: 250px;
+    margin-left: 1.5rem;
+  }
+}
+
+// @include custom-breakpoint($max: 1299px) {
+//   position: static;
+//   top: 0;
+//   left: 0;
+// }

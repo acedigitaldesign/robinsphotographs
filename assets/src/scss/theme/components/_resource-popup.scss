@@ -1,0 +1,116 @@
+/******************************************
+Resource Popup
+******************************************/
+.resource-popup {
+  position: fixed;
+  padding: 1em;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  will-change: opacity; // <- Smoother opacity transition in Chrome
+  pointer-events: none;
+  transition: opacity 600ms; // <-fallback for Opera mini, doesn't support transform
+  transition: transform 600ms, opacity 800ms;
+  transform: translateY(120%);
+  transform: translate3d(0, 120%, 0);
+
+    &[data-resource-popup="active"] {
+      opacity: 1;
+      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
+      pointer-events: auto;
+    }
+}
+.resource-popup__image {
+  margin-bottom: 0;
+  margin-right: 1em;
+  & img {
+    border-radius: 3px;
+  }
+}
+.resource-popup__link-wrap {
+  display: flex;
+  align-items: center;
+  padding: .7em .8em;
+  background-color: $color__primary;
+  color: white;
+  line-height: 1.2;
+  border-radius: .6em;
+  overflow: hidden;
+  box-shadow: 0px 2px 10px 0px rgba(#7e9ac7, .7);
+  // transition: background-color 200ms;
+  transition: opacity 200ms;
+  max-width: 400px;
+  margin-left: auto;
+
+  &:hover,
+  &:active {
+    // background-color: #ff598b;
+    opacity: .7;
+    color: white;
+  }
+
+  &:visited,
+	&:focus {
+		color: white;
+	}
+
+  &:after {
+    font-family: 'ace-icons';
+    content: "\e904";
+    vertical-align: middle;
+    font-size: 2em;
+    line-height: 0;
+    padding-left: .5em;
+    padding-right: .2em;
+    margin-left: auto;
+  }
+}
+.resource-popup__title {
+  margin-bottom: .2em;
+}
+.resource-popup__cta-text {
+  font-weight: 700;
+}
+.resource-popup__close-btn {
+  margin-left: auto;
+  padding: .2em;
+  display: table;
+  line-height: 1;
+  margin-bottom: .2em;
+  cursor: pointer;
+  opacity: .5;
+
+  &:before {
+    @include icon('cross-thin', 1em, false);
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// Media Queries
+@include breakpoint(phone) {
+  .resource-popup {
+    font-size: .85em;
+    width: 100%;
+  }
+  .resource-popup__image {
+    & img {
+      max-width: 50px;
+      height: auto;
+    }
+  }
+}
+// Targets non-hover devices (ie. mobile devices)
+@media (hover: none) {
+  .resource-popup__link-wrap {
+    &:hover,
+    &:active {
+      // background-color: #ff598b;
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,643 @@
+/******************************************
+Utility classes
+******************************************/
+
+// $grid-breakpoints: (
+//   // default: 0,
+//   xs: 481,
+//   s: 640px,
+//   m: 850px,
+//   l: 1025px,
+//   xl: 1441px 
+//   // xxl: 1441px 
+// );
+// $container-vertical-padding: (
+//   xs: 2rem,
+//   s: 3rem,
+//   m: 3rem,
+//   l: 3.4rem,
+//   xl: 3.4rem,
+// );
+$section-vertical-padding: (
+  xs: 1rem,
+  s: 1rem,
+  m: 1rem,
+  l: 1.5rem,
+  xl: 1.5rem,
+);
+
+$margin-size: (
+  xs: $margin__phone,
+  s: $margin__phone,
+  m: $margin__tablet,
+  l: $margin__desktop,
+  xl: $margin__large-desktop
+);
+
+$margin-condensed-size: (
+  xs: $margin-condensed__phone,
+  s: $margin-condensed__phone,
+  m: $margin-condensed__tablet,
+  l: $margin-condensed__desktop,
+  xl: $margin-condensed__large-desktop
+);
+
+// $relative-positioners: (top, right, bottom, left);
+
+// Margin and padding utility class increments
+$spacer: 1rem;
+$space-count: 20;
+$space-increment: 0.25;
+
+// Rows and columns grid spacing class increments
+$grid-spacing: 1rem;
+$grid-spacing-count: 10;
+$grid-spacing-increment: .25;
+
+$grid-columns: 12;
+$grid-spacing: 1.2rem;
+
+// $separator-positions: (
+//   left, right, center
+// )
+
+/******************************************
+Containers
+- Must be done before everything else in it's own media query loop so that adjustment classes have priority
+******************************************/
+@each $key, $value in $grid-breakpoints {
+
+  // @media only screen and (min-width: $value) {
+    @include media-breakpoint-up($key) {
+      // .content section {
+      //   padding-top: map-get($section-vertical-padding, #{$key});
+      //   padding-bottom: map-get($section-vertical-padding, #{$key});
+      // }
+    // Containers
+    // @if $key == "s" {
+      .container {
+        padding: map-get($margin-size, #{$key}) map-get($margin-size, #{$key});
+      }
+    // }
+    // @else {
+    //   .container {
+    //     padding: map-get($margin-size, #{$key})*1.7 map-get($margin-size, #{$key});
+    //   }
+    // }
+    // Sub-containers
+    .sub-container {
+      padding: map-get($margin-condensed-size, #{$key});
+    }
+  }
+};
+
+
+/******************************************
+DEFAULT CLASSES (no media size specified)
+******************************************/
+
+// Flex classes
+.flex { display: flex; }
+
+.justify-content-start { justify-content: flex-start; }
+.justify-content-center { justify-content: center; }
+.justify-content-end { justify-content: flex-end; }
+
+.align-items-start {align-items: flex-start; }
+.align-items-center {align-items: center; }
+.align-items-end {align-items: flex-end; }
+
+.container {
+  width: 100%;
+  max-width: $width__site-content;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+@include media-breakpoint-down(m) {
+  main .container {
+    max-width: 600px;
+  }
+}
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+
+  &:after {
+    display:block;
+    clear:both;
+    content:'';
+  }
+}
+
+[class*="col-"] {
+	float:left;
+  box-sizing:border-box;
+
+  & img {
+    // width: auto;
+    // width: 100%;
+    // @include browser-support($ie: 'true') {
+    //   width: 100%; // IE11 fix - won't act responsively on ie11 if this not set
+    // }
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+// .content {
+//   min-height: 47vh;
+// }
+// @include media-breakpoint-up(x) {
+//   .content {
+//     padding-bottom: 4rem;
+//   }
+// }
+@include media-breakpoint-up(xs) {
+  .content {
+    padding-bottom: 4rem;
+  }
+}
+// @include media-breakpoint-up(s) {
+//   .content {
+//     padding-bottom: 4rem;
+//   }
+// }
+@include media-breakpoint-only(xl) {
+  .content {
+    padding-bottom: 5rem;
+  }
+}
+
+
+
+.content section {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+// @include breakpoint(large-desktop) {
+//   .section {
+//     padding-top: 2rem;
+//     padding-bottom: 2rem;
+//   }
+// }
+
+// separators
+.separator, [class*="separator-"] {
+  // @include separator();
+  margin-top: $font__margin-bottom-p;
+  margin-bottom: $font__margin-bottom-p;
+  &:before {
+    content: "";
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 4px;
+    background-image: inline-svg('<svg width="50" height="4" viewBox="0 0 51 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;"><path d="M0.148,1.926l49.852,0" style="fill:none;stroke:' + $color__separator + ';stroke-width:3.5px;"/></svg>');
+    display: block;
+  }
+
+}
+
+.is-rounded {
+  border-radius: 9px;
+  overflow: hidden;
+}
+// h1,h2,h3,h4,h5,h6 {
+//   &.separator {
+//     @include separator();
+//     margin-top: 3.5rem;
+//   }
+// }
+
+// Margin classes
+.mlr-auto {
+  margin-left: auto;
+  margin-right: auto;  
+}
+@for $i from 0 through $space-count {
+  .m-#{$i}  { margin: $spacer * ($space-increment * $i); }
+  .mt-#{$i} { margin-top: $spacer * ($space-increment * $i); }
+  .mr-#{$i} { margin-right: $spacer * ($space-increment * $i); }
+  .mb-#{$i} { margin-bottom: $spacer * ($space-increment * $i); }
+  .ml-#{$i} { margin-left: $spacer * ($space-increment * $i); }
+
+  .mtb-#{$i} { 
+    margin-top: $spacer * ($space-increment * $i); 
+    margin-bottom: $spacer * ($space-increment * $i); 
+  }
+  .mlr-#{$i} { 
+    margin-left: $spacer * ($space-increment * $i); 
+    margin-right: $spacer * ($space-increment * $i); 
+  }
+  
+  // (negative margins)
+  .mt-n#{$i} { margin-top: $spacer * ($space-increment * ($i*-1)); }
+  .mr-n#{$i} { margin-right: $spacer * ($space-increment * ($i*-1)); }
+  .mb-n#{$i} { margin-bottom: $spacer * ($space-increment * ($i*-1)); }
+  .ml-n#{$i} { margin-left: $spacer * ($space-increment * ($i*-1)); }
+
+}
+
+// Padding classes
+@for $i from 0 through $space-count {
+  .p-#{$i}  { padding: $spacer * ($space-increment * $i); }
+  .pt-#{$i} { padding-top: $spacer * ($space-increment * $i); }
+  .pr-#{$i} { padding-right: $spacer * ($space-increment * $i); }
+  .pb-#{$i} { padding-bottom: $spacer * ($space-increment * $i); }
+  .pl-#{$i} { padding-left: $spacer * ($space-increment * $i); }
+
+  .ptb-#{$i} { 
+    padding-top: $spacer * ($space-increment * $i); 
+    padding-bottom: $spacer * ($space-increment * $i); 
+  }
+  .plr-#{$i} { 
+    padding-left: $spacer * ($space-increment * $i); 
+    padding-right: $spacer * ($space-increment * $i); 
+  }
+}
+
+// Pseudo CSS Grid - Default styles
+.grid-wrapper {
+  overflow: hidden;
+  width: 100%;
+
+    // Applying default styles to nested div instead of 'grid' class here because it means then I don't need to specify both grid as well as grid query classes on same div. Unlike col classes, it's hard to target just grid here as so many variations like grid-wrapper, grid-cell, and grid-query classes etc and I don't know the regex to specify just the grid class, with or without the media query classes..... So applying default styles to the nested div instead of the grid class....Which is why !important is needed when using grid-gutter above to override the default styles on the higher specificity div......It's quite straight forward really, despite the long explanation....Trust your past self!
+    & > div { 
+      $margin: -1em;
+      
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 $margin $margin 0;
+    }
+}
+.grid-cell {
+  $default-cols: 4; 
+  $gutter: 1em;
+
+  width: 100% / $default-cols;
+  border: 0 solid transparent;
+  border-width: 0 $gutter $gutter 0;
+  background-clip: padding-box;
+}
+
+// Floats
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+
+// Position
+.position-relative {
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
+}
+
+// Font Sizes 
+$font-size-spacer: 1em;
+$font-size-count: 20;
+$font-size-increment: 0.2;
+
+@for $i from 0 through $font-size-count {
+  .font-size-#{$i} { 
+    font-size: $font-size-spacer * ($font-size-increment * $i); 
+  }
+}
+
+// Text align
+.text-align-left { 
+  text-align: left 
+}
+.text-align-right { 
+  text-align: right 
+}
+.text-align-center { 
+  text-align: center 
+}
+
+
+// // Relative positioners
+// // - ie top, right, bottom and left - small increments to nudge stuff, mainly icons
+// @each $position in $relative-positioners {
+//   @for $i from 0 through 10 {
+//     .icon-nudge-#{$position}-#{$i}: { 1 * (.1em * $i); 
+//     }
+// }
+
+
+
+//Page widths
+// .is-full {
+  // max-width: $width__narrow-content;
+  // margin-left: auto;
+  // margin-right: auto;
+  // display: block; // Support for IE
+// }
+// .is-wide {
+//   max-width: $width__narrow-content;
+//   margin-left: auto;
+//   margin-right: auto;
+//   display: block; // Support for IE
+// }
+.is-narrow {
+  max-width: $width__narrow-content;
+  margin-left: auto;
+  margin-right: auto;
+  display: block; // Support for IE
+}
+// .is-medium {
+//   max-width: $width__medium-content;
+//   margin-left: auto;
+//   margin-right: auto;
+//   display: block; // Support for IE
+// }
+
+
+// Links that wrap around divs or imgs
+// Without these styles, parent thinks there is more height to child than visually appears
+// .image-link {
+//   height: 100%;
+//   line-height: 0;
+//   display: inline-block;
+//   vertical-align: top;
+// }
+
+
+// Opacity
+$opacity-increment: 0.1;
+@for $i from 0 through 10 {
+  .opacity-#{$i} { 
+    opacity: $i * $opacity-increment; 
+  }
+}
+
+// Max-width
+$maxwidth-increment: 100px;
+@for $i from 0 through 10 {
+  .max-width-#{$i} { 
+    max-width: $i * $maxwidth-increment; 
+  }
+}
+
+/******************************************
+CLASSES WITH MEDIA QUERIES SPECIFIED
+******************************************/ 
+@each $key, $value in $grid-breakpoints {
+
+    @media only screen and (min-width: $value) {
+      // Flex classes
+      .flex-#{$key} { display: flex; }
+
+      .justify-content-#{$key}-start { justify-content: flex-start; }
+      .justify-content-#{$key}-center { justify-content: center; }
+      .justify-content-#{$key}-end { justify-content: flex-end; }
+      
+      .align-items-#{$key}-start {align-items: flex-start; }
+      .align-items-#{$key}-center {align-items: center; }
+      .align-items-#{$key}-end {align-items: flex-end; }
+
+
+      // Pseudo CSS Grid 
+      // Columns
+      @for $i from 1 through 12 {
+        .grid-#{$key}-#{$i} {
+          & > div {
+            width: 100% / ($grid-columns / $i);
+          }
+        }
+      }
+      // Gutter
+      @for $i from 0 through $space-count {
+      .grid-gutter-#{$key}-#{$i} {
+        $gutter: $spacer * ($space-increment * $i);
+        $margin: $gutter * -1;
+
+        margin: 0 $margin $margin 0 !important; // <- Rare to use important but needed here to overright div application of default styles (see note on default styles)
+          & > .grid-cell {
+            border-width: 0 $gutter $gutter 0;
+          }
+        }
+      }
+      
+      // Rows and columns
+      .row {
+        margin-right: -1 * (map-get($margin-size, #{$key})/2);
+        margin-left: -1 * (map-get($margin-size, #{$key})/2);
+
+        // Targets generic cols inside row
+        & > [class="col"] {
+          flex: 1;
+          padding-right: (map-get($margin-size, #{$key})/2);
+          padding-left: (map-get($margin-size, #{$key})/2);
+          padding-bottom: (map-get($margin-size, #{$key}));
+        }
+      }
+      
+      [class*="col-"] {
+        padding-right: (map-get($margin-size, #{$key})/2);
+        padding-left: (map-get($margin-size, #{$key})/2);
+        padding-bottom: (map-get($margin-size, #{$key}));
+      }
+  
+
+      // Column width classes
+      @for $i from 0 through $grid-columns {
+        @if $i == 0 { // <- Hides columns set to 0
+          .col-#{$key}-#{$i} { 
+            width: 0%; 
+            display: none;
+          }
+        }
+        @else if $i < $grid-columns {
+          .col-#{$key}-#{$i} { 
+            width: 100% / ($grid-columns / $i);
+            display: block;
+          }
+        }
+        @else {
+          .col-#{$key}-#{$i} { 
+            width: 100%;
+            display: block;
+          }
+        }
+      }
+  
+    // Column spacing control  
+    @for $i from 0 through $grid-spacing-count {
+      @if $i == 0 {
+        // if set to 0, columns are responsible for managing their own padding, eg. for full background colours in each column
+        .grid-spacing-#{$key}-#{$i} {
+          &.row {
+            margin-right: 0;
+            margin-left: 0;
+          }
+          & > [class*="col-"] {
+            padding-right: 0;
+            padding-left: 0;
+            padding-bottom: 0
+          }
+        }
+      }
+      @else {
+        .grid-spacing-#{$key}-#{$i} {
+          &.row {
+            margin-right: -1 * ((map-get($margin-size, #{$key})/2) + ($grid-spacing * ($grid-spacing-increment * $i)));
+            margin-left: -1 * ((map-get($margin-size, #{$key})/2) + ($grid-spacing * ($grid-spacing-increment * $i)));
+          }
+          & > [class*="col-"] {
+            padding-right: ((map-get($margin-size, #{$key})/2) + ($grid-spacing * ($grid-spacing-increment * $i)));
+            padding-left: ((map-get($margin-size, #{$key})/2) + ($grid-spacing * ($grid-spacing-increment * $i)));
+          }
+        }
+      }
+    }
+
+    // Negative grid spacing 
+    // (ie. makes the space between columns smaller. Only need a few increments here because default padding is already quite modest)
+    @for $i from 1 through 4 {
+      $grid-spacing-neg: 1rem;
+      $grid-spacing-increment-neg: .2;  
+
+      .grid-spacing-#{$key}-n#{$i} {
+        &.row {
+          margin-right: -1 * ((map-get($margin-size, #{$key})/2) + ($grid-spacing-neg * ($grid-spacing-increment-neg * (-1 * $i) )));
+          margin-left: -1 * ((map-get($margin-size, #{$key})/2) + ($grid-spacing-neg * ($grid-spacing-increment-neg * (-1 * $i) )));
+        }
+        & > [class*="col-"] {
+          padding-right: ((map-get($margin-size, #{$key})/2) + ($grid-spacing-neg * ($grid-spacing-increment-neg * (-1 * $i) )));
+          padding-left: ((map-get($margin-size, #{$key})/2) + ($grid-spacing-neg * ($grid-spacing-increment-neg * (-1 * $i) )));
+        }
+      }
+    }
+
+    // Flex Order
+    @for $i from 0 through $grid-columns {
+      .order-#{$key}-#{$i} {
+        order: #{$i};
+      } 
+    }
+
+    // Margin classes
+    .mlr-#{$key}-auto {
+      margin-left: auto;
+      margin-right: auto;  
+    }
+    @for $i from 0 through $space-count {
+      .m-#{$key}-#{$i}  { margin: $spacer * ($space-increment * $i); }
+      .mt-#{$key}-#{$i} { margin-top: $spacer * ($space-increment * $i); }
+      .mr-#{$key}-#{$i} { margin-right: $spacer * ($space-increment * $i); }
+      .mb-#{$key}-#{$i} { margin-bottom: $spacer * ($space-increment * $i); }
+      .ml-#{$key}-#{$i} { margin-left: $spacer * ($space-increment * $i); }
+  
+      .mtb-#{$key}-#{$i} { 
+        margin-top: $spacer * ($space-increment * $i); 
+        margin-bottom: $spacer * ($space-increment * $i); 
+      }
+      .mlr-#{$key}-#{$i} { 
+        margin-left: $spacer * ($space-increment * $i); 
+        margin-right: $spacer * ($space-increment * $i); 
+      }
+
+      // (negative margins)
+      .mt-#{$key}-n#{$i} { margin-top: $spacer * ($space-increment * ($i*-1)); }
+      .mr-#{$key}-n#{$i} { margin-right: $spacer * ($space-increment * ($i*-1)); }
+      .mb-#{$key}-n#{$i} { margin-bottom: $spacer * ($space-increment * ($i*-1)); }
+      .ml-#{$key}-n#{$i} { margin-left: $spacer * ($space-increment * ($i*-1)); }
+    }
+    
+    // Padding classes
+    @for $i from 0 through $space-count {
+      .p-#{$key}-#{$i}  { padding: $spacer * ($space-increment * $i); }
+      .pt-#{$key}-#{$i} { padding-top: $spacer * ($space-increment * $i); }
+      .pr-#{$key}-#{$i} { padding-right: $spacer * ($space-increment * $i); }
+      .pb-#{$key}-#{$i} { padding-bottom: $spacer * ($space-increment * $i); }
+      .pl-#{$key}-#{$i} { padding-left: $spacer * ($space-increment * $i); }
+  
+      .ptb-#{$key}-#{$i} { 
+        padding-top: $spacer * ($space-increment * $i); 
+        padding-bottom: $spacer * ($space-increment * $i); 
+      }
+      .plr-#{$key}-#{$i} { 
+        padding-left: $spacer * ($space-increment * $i); 
+        padding-right: $spacer * ($space-increment * $i); 
+      }
+    }
+
+    .separator-#{$key}-left:before {
+      margin-left: 0;
+      margin-right: auto;
+    }
+    .separator-#{$key}-center:before {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .separator-#{$key}-right:before {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+
+
+    // Buttons 
+    .button-#{$key}-small {
+      font-size: 1em;
+    }
+    .button-#{$key}-full {
+      width: 100%;
+    }
+
+    // Float
+    .float-#{$key}-right {
+      float: right;
+    }
+    .float-#{$key}-left {
+      float: left;
+    }
+
+    // Position
+    .position-#{$key}-relative {
+      position: relative;
+    }
+    .position-#{$key}-absolute {
+      position: absolute;
+    }
+
+    // Text Align
+    .text-align-#{$key}-left { 
+      text-align: left;
+    }
+    .text-align-#{$key}-right { 
+      text-align: right;
+    }
+    .text-align-#{$key}-center { 
+      text-align: center;
+    }
+
+    .display-#{$key}-none {
+      display: none;
+    }
+
+  }
+}
+
+// article, aside {
+//   max-width: $max-width__post-content;
+// }
+// @include breakpoint(tablet){
+//   article {
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+// }
+
+.single article,
+.single .entry-footer {
+  max-width: $max-width__post-content;
+  margin-left: auto;
+  margin-right: auto;
+}

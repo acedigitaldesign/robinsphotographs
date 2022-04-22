@@ -1,0 +1,26 @@
+/******************************************
+Featured image
+******************************************/
+.featured-image {
+  max-width: $max-width__post-content;
+  margin-left: auto;
+  margin-right: auto;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 9px;
+  
+  background-repeat: no-repeat;
+  background-position: (50%, 50%);
+  background-size: cover;
+}
+
+@include media-breakpoint-down(m) {
+  .featured-image {
+    height: 150px
+  }
+}
+@include media-breakpoint-down(s) {
+  .featured-image {
+    height: 120px
+  }
+}

@@ -1,0 +1,25 @@
+.footnotes-marker {
+  display: inline-block;
+  vertical-align: super;
+  font-size: 13px;
+  color: $color__primary;
+  cursor: pointer;
+
+  & [data-disabled="true"] {
+    pointer-events: none;
+    cursor: default;
+    // visibility: visible;
+  }
+
+  &:visited,
+  &:link,
+  &:focus {
+    color: $color__primary;
+    text-decoration: none;
+  }
+  &:active,
+  &:hover {
+    color: $color__dark;
+    text-decoration: underline;
+  }
+}

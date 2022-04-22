@@ -1,0 +1,277 @@
+/******************************************
+Help popup
+******************************************/
+.help-popup-container {
+  display: block;
+  width: 800px;
+  max-width: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.help-popup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 360px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #ffffff;
+  @include box-shadow($blur: 1em);
+  opacity: 0;
+  overflow: hidden;
+  z-index: 0;
+  will-change: opacity, transform; // <- Smoother opacity transition in Chrome
+  pointer-events: none;
+  transform: translateY(10%);
+  transform: translate3d(0, 10%, 0);
+  transition: opacity 800ms; // <-fallback for Opera mini, doesn't support transform
+  transition: transform 600ms, opacity 800ms;
+
+  &[data-active="true"] {
+    opacity: 1;
+    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
+    pointer-events: auto;
+    z-index: 10;
+    // visibility: visible;
+  }
+}
+.help-popup__header {
+  z-index: 11;
+}
+.help-popup__slides {
+  position: relative;
+  flex-grow: 1;
+  // padding-top: 0;
+  // padding-bottom: 0;
+  & h2 {
+    font-size: 1.7em;
+    display: inline-block;
+  }
+}
+.help-popup__slide {
+  font-size: 16px;
+  text-align: left;
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  // padding: 0 20px;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  opacity: 0;
+  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
+  will-change: opacity, transform; // <- Smoother opacity transition in Chrome
+  pointer-events: none;
+  transition: opacity 300ms; // <-fallback for Opera mini, doesn't support transform
+  transition: transform 300ms, opacity 300ms;
+
+    &[data-position="current"] {
+      position: static;
+      opacity: 1;
+      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
+      pointer-events: auto;
+    }
+    &[data-position="right"] {
+      opacity: 0;
+      transform: translateX(10%);
+      transform: translate3d(10%, 0, 0);
+      // pointer-events: auto;
+    }
+    &[data-position="left"] {
+      opacity: 0;
+      transform: translateX(-10%);
+      transform: translate3d(-10%, 0, 0);
+      // pointer-events: auto;
+    }
+}
+.help-popup__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  $color: #c4c4c4;
+  text-decoration: none;
+  padding: 0.2em;
+  line-height: 1;
+  display: block;
+  color: #c4c4c4;
+  &:active,
+  &:hover {
+    color: $color__heading;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  &:before {
+    @include icon(cross-thin, 1em, false);
+  }
+}
+.help-popup__nav-dot-container {
+  width: 100%;
+  z-index: 11;
+  flex: 1;
+  // padding-top: 0;
+
+}
+.help-popup__nav-dot-list {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.help-popup__nav-dot-item {
+  margin-bottom: 0;
+  a {  
+    display: block;
+    padding: 5px;
+    cursor: pointer;
+
+    &:before {
+      content: "";
+      display: block;
+      $nav-dot-size: 8px;
+      border-radius: $nav-dot-size;
+      width: $nav-dot-size;
+      height: $nav-dot-size;
+      background: grey;
+    }
+    &:active,
+    &:hover {
+      &:before {
+        background: $color__primary;
+      }
+    }
+    // active state
+    &[data-active="true"] {
+      &:before {
+        background: $color__primary;
+      }
+    }
+  }
+}
+
+// Nav arrows
+.help-popup__nav-arrows-container {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  left: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 11;
+  // pointer-events: none;
+
+}
+.help-popup__nav-arrow {
+  & a {
+    @include link (
+      $color: #c4c4c4, 
+      $decoration: none, 
+      $hover-color: $color__heading, 
+      $hover-decoration: none,
+    );
+    padding: 0.2em;
+    line-height: 1;
+    display: block;
+  }
+  
+
+  &.-is-previous {
+    float: left;
+
+    & a:before {
+      @include icon(chevron-thin-right, 1em, false);
+      display: block;
+      transform: rotate(180deg);
+    }
+  }
+  &.-is-next {
+    float: right;
+
+    & a:before {
+      @include icon(chevron-thin-right, 1em, false);
+    }
+  }
+
+  &[data-disabled="true"] {
+    display: none;
+  }
+
+}
+
+.help-popup__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.help-popup__next-btn {
+  font-size: .75em;
+}
+.help-popup__start-btn {
+  font-size: .75em;
+}
+.help-popup__dismiss-btn {
+  margin-right: 1.4em;
+  // margin-right: 3%;
+  font-size: 13px;
+  @include link(
+    $color: $color__neutral,
+    $decoration: underline
+  );
+}
+@include custom-breakpoint($max: 400px) {
+  .help-popup__dismiss-btn {
+    display: none;
+  }
+}
+
+@media screen and (min-height: 849px) {
+  .help-popup-container {
+    top: 460px; // so it mostly obscures the form, even on large screens where form sits towards top of viewport.
+  }
+}
+@include breakpoint(desktop large-desktop) {
+  .help-popup__header 
+  .help-popup__footer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .help-popup__slide {
+    padding: 0 2rem;
+  }
+}
+@include breakpoint(small-phone) {
+  .help-popup__slide {
+    max-height: 260px;
+    overflow-y: scroll;
+  }
+}
+
+#ipt_fsqm_form_wrap_6 {
+  .help-popup__trigger {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 22px;
+    padding: 0.2em;
+    cursor: pointer;
+    color: #c4c4c4; 
+    text-decoration: none;
+    line-height: 1;
+    &:active,
+    &:hover {
+      color: $color__heading; 
+      text-decoration: none;
+    }
+    &:before {
+      @include icon(info, 1em, false);
+    }
+  }
+}

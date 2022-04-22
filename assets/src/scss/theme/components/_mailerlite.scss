@@ -1,0 +1,55 @@
+.ml-error input {
+  border-color: red;
+}
+.ml-field-group {
+  margin-bottom: .6em;
+}
+.ml-block-form {
+  button {
+    display: block;
+    width: 100%;
+    font-family: $font-family__buttons;
+    font-weight: 700;
+    border: 0;
+    padding: $padding__button;
+    font-size: 1em;
+    line-height: 1.2;
+    min-width: 100px;
+    border-radius: $border-radius__button;
+    text-decoration: none;
+    transition: all 150ms;
+    text-align: center;
+    transition: all 150ms;
+    min-width: 8em;
+    will-change: opacity; // <- Smoother opacity transition in Chrome
+    @include link-unstyled;
+
+    background-color: $color__primary;
+    color: #ffffff;
+    opacity: 1;
+  
+    &:visited,
+    &:link,
+    &:focus {
+      color: #ffffff;
+    }
+  
+    &:hover,
+    &:active {
+      color: #ffffff;
+      opacity: 1;
+      cursor: pointer;
+      background-color: darken($color__primary, 8%);
+    }
+    &.loading {
+      pointer-events: none;
+      background-color: darken($color__primary, 8%);
+      &:after {
+        @include button-spinner(
+          $size: 1em,
+          $border-width: 2px
+        );
+      }
+    }
+  }
+}

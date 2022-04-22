@@ -1,0 +1,70 @@
+/******************************************
+eForm Progress Bar
+(Photo submission form)
+******************************************/
+$height__progress-bar: 26px;
+
+.eform-progress-bar {
+  min-height: $height__progress-bar;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.eform-progress-bar__step {
+  text-align: center;
+  position: relative;
+  flex: 1;
+}
+.eform-progress-bar__number {
+  background-color: #D5CFC8;
+  font-size: 14px;
+  border-radius: $height__progress-bar;
+  width: $height__progress-bar;
+  height: $height__progress-bar;
+  line-height: $height__progress-bar;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 700;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  
+  [data-active="true"] & {
+    background-color: #F13218;
+  }
+}
+.eform-progress-bar__label {
+  font-size: 14px;
+}
+.eform-progress-bar__line {
+  width: 100%;
+  border-top: 2px dashed #EFEFEF;
+  position: absolute;
+  top: $height__progress-bar/2;
+  left: 50%;
+}
+
+
+@media (max-width: 480px) {
+  $height__progress-bar: 20px;
+  .eform-progress-bar__number {
+    font-size: 12px;
+    border-radius: $height__progress-bar;
+    width: $height__progress-bar;
+    height: $height__progress-bar;
+    line-height: $height__progress-bar;
+  }
+  .eform-progress-bar__label {
+    font-size: 12px;
+  }
+  .eform-progress-bar__line {
+    top: $height__progress-bar/2;
+  }
+}

@@ -1,0 +1,17 @@
+msgid "colour"
+msgstr "color"
+
+msgid "colourise"
+msgstr "colorize"
+
+msgid "colourising"
+msgstr "colorizing"
+
+msgid "Colourising"
+msgstr "Colorizing"
+
+msgid "Favour"
+msgstr "Favor"
+
+msgid "favour"
+msgstr "favor"

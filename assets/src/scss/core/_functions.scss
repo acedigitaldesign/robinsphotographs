@@ -1,0 +1,86 @@
+
+/****************************************
+Functions
+******************************************/ 
+
+// Image path (useful for bg-image styling)
+@function images-path($file-name){
+  $url-open: "url('";
+  $close: "')";
+  @return unquote($url-open + $theme-directory__images + $file-name + $close);
+}
+
+// Font paths (used almost exclusively in fonts scss)
+@function font-path($font-folder, $font-name, $font-format: 'null') {
+  $font-path: $theme-directory__fonts + $font-folder + '/' + $font-name;
+  $url-open: "url('";
+  $format-open: "format('";
+  $close: "')";
+  @if $font-format != 'null' {
+    $format: unquote($format-open + $font-format + $close);
+    @return unquote($url-open + $font-path + $close + $format);
+  }
+  @else {
+    @return unquote($url-open + $font-path + $close);
+  }
+}
+
+// Functions to urlencode the svg string
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@function url-encode($string) {
+  $map: (
+    "%": "%25",
+    "<": "%3C",
+    ">": "%3E",
+    " ": "%20",
+    "!": "%21",
+    "*": "%2A",
+    "'": "%27",
+    '"': "%22",
+    "(": "%28",
+    ")": "%29",
+    ";": "%3B",
+    ":": "%3A",
+    "@": "%40",
+    "&": "%26",
+    "=": "%3D",
+    "+": "%2B",
+    "$": "%24",
+    ",": "%2C",
+    "/": "%2F",
+    "?": "%3F",
+    "#": "%23",
+    "[": "%5B",
+    "]": "%5D"
+  );
+  $new: $string;
+  @each $search, $replace in $map {
+    $new: str-replace($new, $search, $replace);
+  }
+  @return $new;
+}
+
+@function inline-svg($string) {
+  @return url('data:image/svg+xml;charset=US-ASCII,#{url-encode($string)}');
+}
+
+
+
+// Generates a string of :not(.class) for each class in the list passed
+// - used mainly in default a tag styling
+@function generate-link-style-exceptions($exception-classes) {
+  $list: "";
+  @each $class in $exception-classes {
+    $str: str-insert($class, ":not(", 1);
+    $str: str-insert($str, ")", 100);
+    $list: $list + $str;
+  };
+  @return $list;
+}

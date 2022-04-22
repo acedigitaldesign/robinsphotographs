@@ -1,0 +1,11 @@
+/******************************************
+Core Admin Styles imports
+- Optionally imported in theme style-admin.scss
+- Or in style-admin.scss can import specific admin styles, whichever appropriate
+******************************************/
+
+@import "admin-loaders";
+@import "acf-mods";
+@import "uid";
+@import "content";
+@import "post-tables";

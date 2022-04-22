@@ -1,0 +1,48 @@
+/******************************************
+Javascript Notice
+******************************************/
+[data-javascript-disabled] {
+  overflow: hidden;
+}
+.javascript-notice {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 999999999;
+
+  & > .container {
+    height: 100%;
+  }
+}
+.javascript-notice__wrapper {
+  max-width: 539px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+  & p {
+    color: $color__white;
+  }
+}
+.javascript-notice__icon {
+  color: white;
+  font-size: 3rem;
+}
+.javascript-notice__heading {
+  color: $color__white;
+}
+.javascript-notice__overlay {
+  background-color: $color__primary;
+  opacity: 1;
+  width: 100% ;
+  position: fixed;
+  height: 100% ;
+  top: 0;
+  left: 0 ;
+  z-index: 999999996;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  pointer-events: none;
+}

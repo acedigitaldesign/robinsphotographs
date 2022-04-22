@@ -1,0 +1,140 @@
+/******************************************
+Mobile Menu 02
+// Side Panel
+// Is an independant menu separate from menu on larger screens.
+// Panel appears from the side of the viewport.
+******************************************/
+.mobile-menu{
+  position: absolute;
+  position: fixed;
+  justify-content: unset;
+  overflow-x: hidden;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  width: 50%;
+  min-width: 270px;
+  height: 100%; // <- fallback
+  height: 100vh;
+  background-color: $color__mobile-menu; // <- fallback
+  z-index: 12;
+  transition: transform 300ms ease;
+
+  &[data-mobile-menu="active"] {
+    transform: translateX(0%);
+    box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.75);
+  }
+}
+.mobile-menu__close {
+  float: right;
+  color: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+  line-height: 1;
+}
+.mobile-menu__close::after {
+  @include icon(cross-thin, 1.5rem, false);
+}
+.mobile-menu__logo {
+  display: block;
+  position: relative;
+  top: -.4rem;
+  margin-bottom: 1.5em;
+}
+.mobile-menu__nav {
+  margin-top: 50px;
+}
+.mobile-menu__nav-list .menu-item {
+  margin-bottom: .6em;
+  font-size: $font-size__mobile-menu;
+
+  & a {
+    @include link (
+      $color: #ffffff,
+      $hover-color: #ffffff,
+    );
+  }
+}
+.mobile-menu__cta {
+  font-size: 16px;
+}
+
+@include media-breakpoint-only(xs) {
+  .mobile-menu__cta {
+    font-size: 15px;
+  }
+}
+
+// .mobile-menu .sub-menu {
+//   position: absolute;
+//   // margin-top: 1em;
+//   padding-top: 1.2em;
+//   opacity: 0;
+//   // height: 0;
+//   transition: all 400ms;
+//   pointer-events: none;
+//   z-index: 100;
+
+//   &:hover {
+//     opacity: 1;
+//     // visibility: 1;
+//     height: auto;
+//     pointer-events: auto;
+//   }
+// }
+.mobile-menu .sub-menu__list {
+  display: none;
+  // padding-left: 1em;
+  margin: .4em 0;
+
+  & > li {
+    padding-left: 1em;
+    position: relative;
+  // margin-bottom: 0;
+  // width: 200px;
+  // display: flex;
+  // align-items: center;
+  // background-color: #ffffff;
+
+  //   &:not(:first-child) {
+  //     border-top: 1px solid #E5E5ED;
+  //   }
+
+    & > a {
+      font-size: .9em;
+      opacity: .7;
+  //     @include link(
+  //       $color: black,
+  //       $decoration: none,
+  //       $hover-color: black,
+  //       $hover-decoration: none
+  //     );
+  //     padding: .8em 1em;
+  //     width: 100%;
+  //     transition: background-color 200ms;
+
+      &:before {
+        content: "-";
+        position: absolute; 
+        left: 0;
+      }
+    }
+  }
+}
+
+
+
+
+// Media Queries
+@include breakpoint(large-desktop desktop) {
+  .mobile-menu {
+    display: none;
+    position:absolute !important;
+    left:-10000px !important;
+    top:auto !important;
+    width:1px !important;
+    height:1px !important;
+    overflow:hidden !important;
+  }
+}

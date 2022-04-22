@@ -1,0 +1,34 @@
+/******************************************
+Theme mixins
+******************************************/
+@mixin section-border-wavy-bottom($color: #f0f8ff, $offset: 50%, $invert: false, $padding: 80px, $margin-bottom: 2em) {
+  margin-bottom: $margin-bottom;
+  position: relative;
+  
+  @if $invert {
+    padding-bottom: $padding;
+  }
+  // padding-bottom: .5em;
+  &::after {
+    content: '';
+    // display: block;
+    position: absolute;
+    background-repeat: repeat-x;
+    background-position: -300px center; // <-fallback
+    background-position: $offset center;
+    background-size: 1000px 60px;
+    width: 100%;
+    height: 60px;
+    bottom: -59px;
+    left: 0;
+    @if $invert {
+      background-image: inline-svg('<svg width="1000" height="60" viewBox="0 0 500 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path fill="' + $color + '" d="M500,30l-500,0l0,-30c77.11,0 137.885,25.537 245.908,25.537c103.024,0 158.701,-25.537 254.092,-25.537l0,30Z"/></svg>');
+      bottom: -1px;
+    }
+    @else {
+      background-image: inline-svg('<svg width="375px" height="54px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><rect id="robins-photographs-divider-curve-1" x="0" y="0" width="375" height="54" style="fill:none;"/><clipPath id="_clip1"><rect x="0" y="0" width="375" height="54"/></clipPath><g clip-path="url(#_clip1)"><path d="M0.75,23.094c157.379,41.952 284.926,38.229 375,-22.869l-0,54l-375,0l-0,-31.131Z" style="fill:' + $color + ';"/></g></svg>');
+    }
+
+  }
+}
+

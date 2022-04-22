@@ -1,0 +1,27 @@
+.module-restoration {
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #1d1b16;
+  background-image: url('/wp-content/uploads/2022/01/old-vintage-photo-of-a-beautiful-young-woman.jpg');
+  background-repeat: no-repeat;
+  background-position: 45% 20px;
+  height: 400px;
+  background-size: cover;
+
+  & .sub-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+  }
+}
+.module-restoration__title {
+  color: white;
+  font-size: 20px;
+  flex-grow: 1;
+}
+@include breakpoint(large-desktop) {
+  .module-restoration__title {
+    font-size: 23px;
+  }
+}

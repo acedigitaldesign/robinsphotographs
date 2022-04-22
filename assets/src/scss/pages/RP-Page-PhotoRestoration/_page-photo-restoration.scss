@@ -1,0 +1,316 @@
+/******************************************
+Photo Restoration Landing/Info page
+******************************************/
+// Hero
+#start-here {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: $height__site-header-desktop;
+  min-height: 600px;
+  // max-height: -webkit-fill-available; // <- mobile viewport bug fix
+  background-image: url("/wp-content/uploads/2022/01/mother-and-pregnant-woman-sharing-old-photo-memories.jpg");
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-position-x: 20%;
+  background-position-y: 20%;
+  background-size: cover;
+  position: relative;
+  padding-bottom: 120px; // accomodate wave
+  &:before {
+    content: '';
+    background-color: #2D1F1F;
+    opacity: .6;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .but1, .but2 {
+    flex: 1;
+    max-width: 250px;
+    margin-bottom: 1em;
+  } 
+  .but1 {
+    margin-right: 1em;
+  }
+  .lead {
+    font-size: 1.6em;
+    line-height: 1.4;
+    margin-bottom: .6rem;
+  }
+  .container {
+    max-width: $width__site-content;
+  }
+}
+.start-here__description {
+  max-width: 600px;
+}
+.hero__curve-divider {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: -1px; // sometimes browser rendering a thin line not being covered so -1px solves this
+  left: 0;
+}
+
+@include media-breakpoint-only(xl) {
+  #start-here {
+    header {
+      font-size: 22px;
+    }
+    .lead {
+      max-width: 100%;
+    }
+    h1 {
+      font-size: 77px;
+    }
+    p {
+      max-width: 700px;
+    }
+  }
+}
+@include media-breakpoint-down(m) {
+  #start-here h1 {
+    font-size: 59px;
+  }
+}
+@include media-breakpoint-only(xs) {
+  .d-flex {
+    flex-wrap: wrap;
+  }
+  .but1, .but2 {
+    min-width: 100%;
+  }
+  #start-here {
+    padding-top: $height__site-header-primary-menu-mobile;
+    background-position-x: 50%;
+    padding-bottom: 4rem;
+    min-height: 0;
+    h1 {
+      font-size: 54px;
+      line-height: 1.2;
+    }
+    .lead {
+      font-size: 1.2em;
+    }
+  }
+  .hero__curve-divider {
+    height: 50px;
+  }
+}
+
+@include media-breakpoint-only(xl) {
+  #start-here {
+    height: 900px;
+  }
+}
+@include media-breakpoint-only(l) {
+  #start-here {
+    min-height: 640px;
+  }
+  .hero__curve-divider {
+    height: 160px;
+  }
+}
+#how-it-works {
+  .beaf__container {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.how-it-works__steps {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  & > .row {
+    flex-wrap: nowrap;
+  }
+
+}
+.how-it-works__step {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+}
+$size__step-number: 50px;
+
+.how-it-works__step-number {
+  text-align: center;
+  width: $size__step-number;
+  height: $size__step-number;
+  font-size: 35px;
+  line-height: 45px;
+  font-family: "Literata";
+  font-weight: 700;
+  color: #ffffff;
+  background-color: $color__cashmere;
+  border-radius: $size__step-number;
+  margin-bottom: .5em;
+
+  &:before {
+    content: "";
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    top: $size__step-number / 2;
+    left: 50%;
+    transform: translateX($size__step-number / 2);
+    // border: 1px dashed $color__cashmere;
+    background-repeat: repeat-x;
+    background-size: cover;
+    background-size: 14px 3px;
+    background-image: inline-svg('<svg width="100%" height="100%" viewBox="0 0 11 3" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><rect id="robins-photographs-steps-dotted-line-horizontal" x="-0" y="-0" width="10.5" height="2.25" style="fill:none;"/><clipPath id="_clip1"><rect x="-0" y="-0" width="10.5" height="2.25"/></clipPath><g clip-path="url(#_clip1)"><path d="M1.138,2.25l6.825,0c0.628,0 1.138,-0.504 1.138,-1.125c-0,-0.621 -0.51,-1.125 -1.138,-1.125l-6.825,0c-0.628,0 -1.138,0.504 -1.138,1.125c0,0.621 0.51,1.125 1.138,1.125Z" style="fill:#e3bda6;"/></g></svg>')
+  }
+}
+.how-it-works__step-description {
+  max-width: 210px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+@include media-breakpoint-only(xs) {
+  .how-it-works__steps {
+    & > .row {
+      flex-wrap: wrap;
+    }
+  }
+  .how-it-works__step {
+    min-height: 80px;
+    flex-wrap: nowrap;
+  }
+  .how-it-works__step-description {
+    flex: 1;
+  }
+  .how-it-works__step-number {
+    margin-right: .8em;
+    margin-bottom: 0;
+    &:before {
+      width: 3px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 65px;
+      background-repeat: repeat-y;
+      background-size: 3px 14px;
+      background-image: inline-svg('<svg width="100%" height="100%" viewBox="0 0 3 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><rect id="robins-photographs-steps-dotted-line-vertical" x="0.688" y="-0" width="2.25" height="10.502" style="fill:none;"/><clipPath id="_clip1"><rect x="0.688" y="-0" width="2.25" height="10.502"/></clipPath><g clip-path="url(#_clip1)"><path d="M0.688,1.138l0,6.825c0,0.628 0.504,1.138 1.125,1.138c0.621,-0 1.125,-0.51 1.125,-1.138l0,-6.825c0,-0.628 -0.504,-1.138 -1.125,-1.138c-0.621,0 -1.125,0.51 -1.125,1.138Z" style="fill:#e3bda6;"/></g></svg>')
+    }
+  }
+}
+// remove dashes on last step
+.how-it-works__steps [class*="col-"]:last-child .how-it-works__step-number:before {
+  background: none;
+}
+
+// Portfolio
+#portfolio {
+  background-color: $color__cashmere;
+  .beaf__row {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .beaf__container {
+    outline: 8px solid rgba($color__white, .17);
+  }
+}
+@include media-breakpoint-only(l) {
+  #portfolio .beaf__row {
+    max-width: 900px
+  }
+}
+// Who is Robin
+#who-is-robin {
+  position: relative;
+  background-color: $color__coffee;
+
+  & > .container {
+    z-index: 1;
+  }
+  // BG image
+  .bg-row {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    margin: 0; // important - needed so padding column paddings perfectly match info column padding
+  }
+  .bg-img {
+    background-image: url("/wp-content/uploads/2022/01/robins-photographs-old-photo-soldiers-on-dock-square.png");
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position-x: 20%;
+    background-position-y: 50%;
+    background-size: cover;
+  }
+  .team__member-photo {
+    img {
+      border: 6px solid rgba(255, 255, 255, .3);
+    }
+  }
+  .quote {
+    &::before{
+      opacity: .65;
+    }
+  }
+  .quote__text {
+    font-size: 1.12em;
+  }
+}
+
+
+#order-now {
+  p {
+    max-width: 600px;
+  }
+  .price {
+    font-size: 16px;
+  }
+  .price__regular {
+    text-decoration: line-through;
+    font-weight: 700;
+  }
+  .price__sale {
+    display: block;
+    font-size: 2.8em;
+    color: $color__primary;
+    font-weight: 700;
+    line-height: 1;
+    .woocommerce-Price-currencySymbol {
+      font-size: .5em;
+      vertical-align: super;
+    }
+  }
+  .price__qualifier {
+    font-size: .8em;
+    display: block;
+    opacity: .9;
+  }
+  .icon-list {
+    li:before {
+      color: #58D0C0;
+    }
+  }
+}
+
+@include media-breakpoint-down(m) {
+  #who-is-robin {
+    .bg-row {
+      display: none;
+    }
+  }
+}
+@include media-breakpoint-only(xs) {
+  .team__qualifier {
+    display: none;
+  }
+  #order-now {
+    .container {
+      padding-top: .5em; // yes this is used! Reduces white space slightly
+    }
+  }
+}

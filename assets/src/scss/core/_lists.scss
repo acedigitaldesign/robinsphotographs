@@ -1,0 +1,178 @@
+/******************************************
+Lists
+******************************************/
+$icon-colors: (
+  primary: $color__primary,
+  secondary: $color__secondary,
+);
+.icon-list {
+  font-size: .95em;
+  position: relative;
+  margin-bottom: $font__margin-bottom-p * 1.2;
+  color: $color__body;
+  line-height: $line-height__body;
+
+  & > li {
+    position: relative;
+    margin-bottom: .3em;
+    padding-left: 1.6em;
+    position: relative;
+    
+  }
+  & > li:before {
+    color: lighten($color__body, 40%);
+    top: .32em;
+    left: .4em;
+    position: absolute;
+  }
+
+  @each $name, $hex in $icon-map {
+    &.icon-#{$name} {
+      > li:before {
+        @include icon(#{$name}, .7em, false);
+      }
+    }
+  }
+
+  @each $name, $color in $icon-colors {
+    &.icon-color-#{$name} > li:before {
+      color: $color;
+    }
+  }
+  // Icon nudges for list icons
+  // @for $i from 1 through 10 {
+  //   &.icon-nudge-#{$i} > li:before {
+  //     left: $i * .1em;
+  //   }
+  // }
+  // @for $i from 1 through 10 {
+  //   &.icon-nudge-n#{$i} > li:before {
+  //     left: $i * -.1em;
+  //   }
+  // }
+}
+.dash-list {
+  font-size: .95em;
+  position: relative;
+  margin-bottom: $font__margin-bottom-p;
+  color: $color__body;
+  line-height: $line-height__body;
+
+  & > li {
+    position: relative;
+    margin-bottom: .4em;
+    padding-left: 1.6em;
+    position: relative;
+    
+  }
+  // Default is a dash icon
+  & > li:before {
+    color: $color__primary;
+    top: .4em;
+    left: .4em;
+    @include icon('dash', .7em, false);
+    position: absolute;
+  }
+}
+.numbered-list {
+  counter-reset: list-number;
+  margin-bottom: $font__margin-bottom-p;
+
+  & > li {
+    counter-increment: list-number;
+    margin-bottom: .3em;
+    padding-left: 1.6em;
+    position: relative;
+  }
+  & > li:before {
+    content: counter(list-number)".";
+    font-size: .9em;
+    position: absolute;
+    left: 0;
+    line-height: inherit;
+    top: 0.11em;
+  }
+}
+
+// .content ul {
+//   font-size: .95em;
+//   position: relative;
+//   margin-bottom: 2rem;
+//   color: $color__body;
+//   line-height: $line-height__body;
+
+//   & > li {
+//     margin-bottom: .3em;
+//     padding-left: 1.6em;
+//     position: relative;
+    
+//   }
+//   & > li:before {
+//     top: .32em;
+//     left: .4em;
+//     color: $color__primary;
+//     @include icon('dash', .7em, false);
+//     position: absolute;
+//     // left: 0;
+//   }
+// }
+// .content .list {
+//   font-size: .95em;
+//   position: relative;
+//   margin-bottom: 2rem;
+//   color: $color__body;
+//   line-height: $line-height__body;
+
+//   // & > li {
+//   //   margin-bottom: .3em;
+//   //   padding-left: 1.6em;
+//   //   position: relative;
+    
+//   // }
+//   // & > li:before {
+//   //   top: .32em;
+//   //   left: .4em;
+//   //   color: $color__primary;
+//   //   @include icon('dash', .7em, false);
+//   //   position: absolute;
+//   //   // left: 0;
+//   // }
+// }
+
+
+$relative-positioners: (top, right, bottom, left);
+$icon-nudge-spacer: 0.05em;
+
+@each $position in $relative-positioners {
+  @for $i from 0 through 8 {
+    .icon-list.icon-nudge-#{$position}-#{$i} {
+      & > li:before {
+        #{$position}: 1 * ($icon-nudge-spacer * $i); 
+      }
+    }
+    // Negative positioning
+    .icon-list.icon-nudge-#{$position}-n#{$i} {
+      & > li:before {
+        #{$position}: -1 * ($icon-nudge-spacer * $i); 
+      }
+    }
+  }
+}
+
+
+// Icon size
+// - fine tune the size of icons, often used when on links
+@for $i from 1 through 10 {
+  .icon-size-#{$i}:not(.icon-before):not(.icon-list) {
+    &:after {
+      font-size: .2em * $i; 
+    }
+  }
+  .icon-size-#{$i}.icon-before:not(.icon-list) {
+    &:before {
+      font-size: .2em * $i; 
+    }
+  }
+}
+
+// reduced spacing!

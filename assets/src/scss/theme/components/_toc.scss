@@ -1,0 +1,21 @@
+/******************************************
+Table of Contents (TOC)
+- Using Plugin
+******************************************/
+.lwptoc_i {
+	border-left: 1px solid #ffd0d0;
+  background: #fffafa;
+  border-radius: $border-radius;
+
+}
+.lwptoc .lwptoc_item {
+  font-size: 16px;
+  margin-top: 0;
+}
+.lwptoc_item a {
+  @include link(
+    $color: $color__primary,
+    $decoration: none,
+    $hover-color: $color__link-hover
+  );
+}

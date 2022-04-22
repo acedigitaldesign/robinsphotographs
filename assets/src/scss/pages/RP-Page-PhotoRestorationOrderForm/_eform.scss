@@ -1,0 +1,541 @@
+/******************************************
+eForm
+(Photo submission form)
+******************************************/
+// Form variables
+$max-width__eform: 640px;
+// Quantity
+// #ipt_fsqm_form_6_tab_0 {
+
+//   & .ui-slider-handle {
+//     width: 24px;
+//     height: 24px;
+//     margin-left: -12px;
+//     top: -10px;
+//     &:hover {
+//       cursor: pointer;
+//     }
+//   }
+
+//   & .ipt_uif_slider_box {
+//     padding-left: 0;
+//     width: 100%;
+//     max-width: 800px;
+//     margin-left: auto;
+//     margin-right: auto;
+
+//     & input {
+//       // border: 1px solid #d6dbde;
+//       // border-radius: 6px;
+//       font-size: 50px;
+//       position: static;
+//       border-bottom: none;
+//       height: 1.4em;
+//       margin-bottom: 50px;
+//       width: auto;
+//       max-width: 90px; // Firefox fix
+//     }
+//   }
+
+// }
+
+// Uploads
+#ipt_fsqm_form_6_tab_0 {
+  // Hides file meta (adding it in manually as default has been concatenated into single string so can't remove uncessary bits)
+
+  .fileinput-button {
+    & input {
+      cursor: pointer!important;
+    }
+  }
+  & .fileupload-meta {
+    display: none;
+  }
+  // Element heading
+  & .ipt_uif_container_head {
+    display: none;
+  }
+  & .fileupload-buttons {
+    text-align: center;
+  }
+  & .ipt_fsqm_fileuploader_list thead {
+    border-bottom: none;
+  }
+  .ipt_fsqm_fileuploader_list {
+    td {
+      vertical-align: middle;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+  // Main progress bar
+  .fileupload-progress {
+    display: none; // don't need 2 progress bars....
+  }
+  .preview img {
+    max-width: 100px;
+  }
+  .preview_td {
+    width: 18%;
+  }
+
+  .files {
+    & tr:not(:first-child) {
+      border-top: 1px solid #efefef;
+    }
+  }
+
+  
+  // Additional image uploader
+  .template-upload {
+    position: relative;
+
+    & > td {
+      &:nth-child(1) {
+        width: 18%;
+      }
+      &:nth-child(2) {
+        width: 0;
+      }
+      
+    }
+    canvas {
+    max-width: 100px!important;
+    }
+    .cancel {
+      .ui-button-text {
+        display: none;
+      }
+      .ui-icon {
+        left: 0;
+        top: 0;
+      }
+    }
+    .name {
+      display: none;
+    }
+    
+  }
+  .delete_button {
+    text-align: right;
+    .ui-button-text {
+      display: none;
+    }
+    .ui-icon {
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+
+// Hide Quantity
+#ipt_fsqm_form_6_mcq_9, // <- old slider quantity
+#ipt_fsqm_form_6_freetype_9 {
+  display: none;
+}
+
+
+// Colorise
+#ipt_fsqm_form_6_tab_1 {
+  & .ipt_uif_question_label {
+    display: none;
+  }
+  & .ipt_uif_question_content {
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    float: none;
+  }
+
+}
+
+
+// Prints
+#ipt_fsqm_form_6_tab_2 {
+  & .ipt_uif_question_label {
+    display: none;
+  }
+}
+
+// Speed
+#ipt_fsqm_form_6_tab_3 {
+  & .ipt_uif_question_label {
+    display: none;
+  }
+}
+
+/******************************************
+Common styles
+******************************************/
+
+#ipt_fsqm_form_wrap_6 {
+  z-index: 1;
+}
+#ipt_fsqm_form_6 {
+  $color__selected: #ffd360;
+  margin-bottom: 2rem;
+
+  // Panels
+  .ipt_fsqm_form_tab_panel {
+    min-height: 350px;
+  }
+  .ipt_uif_question_label {
+    display: none;
+  }
+
+  // Hide page headings
+  & .ipt_fsqm_main_heading {
+    display: none;
+  }
+  .ipt_uif_question_content {
+    max-width: $max-width__eform;
+    margin: 0 auto;
+    float: none;
+  }
+  .eform-instructions {
+    text-align: center;
+    padding-bottom: 0 !important;
+    font-size: $font-size__body;
+    max-width: $max-width__eform;
+    margin-left: auto;
+    margin-right: auto;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .ipt_uif_container_head h3 {
+    // margin-top: 0;
+    // margin-bottom: 0;
+    // color: #212121;
+    // font-weight: 300;
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .ipt_uif_sda_elem {
+    padding: 24px 0 18px;
+    border: none;
+    margin: 0;
+
+    & .ipt_uif_column_half {
+      height: 48px;
+    }
+    &:not(:first-child) {
+      border-top: 1px dotted #dcdcdc;
+    }
+    & .ipt_uif_sda_del {
+      background-color: rgba(255, 255, 255, 0);
+    }
+    & .ipt-eform-sda-toolbar {
+      background-color: rgba(255, 255, 255, 0);
+      top: 50%;
+      transform: translateY(-50%);
+      left: -20px;
+      opacity: 0.5;
+
+    }
+  }
+  // Repeatable (eg. print sizes)
+  .ipt_uif_sda_body {
+    padding: 0;
+  }
+  // Secondary buttons
+  & .secondary-button {
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  & .ui-widget-header {
+    border-top: none;
+    border-bottom: none;
+  }
+  .ipt_fsqm_container_thumbselect .ipt_uif_question_content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .ipt_uif_thumbselect_wrap {
+    flex-basis: 50%;
+    margin-bottom: 1rem;
+    padding: 0 15px;
+    text-align: left;
+    &:first-child {
+      text-align: right;
+    }
+
+    & label {
+      height: 100%; // Makes each option same height
+      &:before, &:after {
+        display: none;
+      }
+ 
+    }
+    // Option text
+    & .ui-widget-header {
+      // transition: none;
+      font-size: 20px;
+      font-weight: 700;
+      // margin-top: 0;
+      // color: $color__heading;
+    }
+    & input[type="radio"] + label {
+      padding: 20px;
+      border-radius: 10px;
+      // outline: 1px solid #ffffff;
+      outline: 1px dotted #dcdcdc;
+      transition: outline 0ms, transform 200ms;
+      &:hover {
+        transform: translateY(-6px);
+        border: none;
+        // outline: 1px solid $color__selected;
+      }
+    }
+
+    & input[type="radio"]:checked + label {
+      outline: 1px solid $color__selected;
+      background: lighten($color__selected, 28%);
+      transform: translateY(-6px);
+
+      & .ui-widget-header {
+        color: darken($color__selected, 42%)
+      }
+      // #fff9e3
+    }
+    // & [type="radio"]:not(:checked) + label, 
+    // & [type="radio"]:checked + label {
+    //     // transition: none;
+    // }
+    .eform__popular-flag {
+      border: 1px solid #F5BF1C;
+      border-radius: 5px;
+      color: #F5BF1C;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 0.4em 1em;
+      width: auto;
+      display: inline-block;
+      text-transform: uppercase;
+      margin-top: 1em;
+
+      // position: absolute;
+      // top: -12px;
+      // background: white;
+      // transform: translateX(-50%);
+      // margin-top: 0;
+      
+      &:before {
+        @include icon(star-rounded-full, .9em, false);
+        margin-right: .5em;
+      }
+    }
+
+  }
+
+  // Override default highlighting
+  .ipt_uif_question .ipt_uif_thumbselect_wrap.ipt-eform-thumbselect-border input[type='radio'] {
+    &+ label img {
+      opacity: 1;
+      border: none;
+    }
+    &:checked + label img {
+      opacity: 1;
+      border: none;
+    }
+  }
+  // Price qualifiers
+  .eform__price-qualifier {
+    font-size: 15px;
+    font-weight: 400;
+    opacity: .8;
+    margin-top: .6em;
+  }
+  // .formError {
+  //   margin-bottom: .5em;
+  //   background-color: #fff2f0;
+  //   border: 1px solid #ffd4ca;
+  //   border-radius: 6px;
+  //   padding: 0.5em 0.75em;
+  //   color: $color__primary;
+  //   font-size: 15px;
+  //   margin-bottom: .5em;
+  //   margin-top: 1rem !important;
+  //   border-top: 1px solid #ffd4ca;
+  //   width: 100%;
+  //   max-width: 500px;
+  // }
+  
+}
+
+.ipt_uif_thumbselect_wrap img {
+  // transition: border 200ms;
+  opacity: 1 !important;
+  border-radius: 4px;
+  &:hover {
+    border-color: none;
+  }
+
+
+}
+
+
+#ipt_fsqm_form_6 {
+  // .select2-container {
+  //   // height: 24px;
+  // }
+  .select2-container .select2-selection--single {
+    padding: .6em .75em;
+    height: 24px;
+    font-size: 16px;
+    line-height: 1;
+    border: 1px solid #d6dbde;
+    border-radius: 6px;
+  }
+  .select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 24px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+  }
+  .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: black;
+    line-height: normal;
+    padding-left: 0;
+  }
+  .select2-selection--single .select2-selection__rendered {
+    color: #212121;
+    line-height: 1.5;
+  } 
+  .select2-container--focus {
+    box-shadow: none;
+  }
+  .select2-selection--single,
+  .select2-selection--multiple {
+    box-shadow: none;
+  }
+
+//   .valid ~ .select2-container .select2-selection--single, 
+//   .ipt-uif-custom-material-custom .valid ~ .select2-container .select2-selection--multiple {
+//     border-bottom-color: #4caf50;
+//     box-shadow: 0 1px 0 0 #4caf50;
+// }
+}
+
+
+// Drop down
+.select2-container--eform-material {
+  .select2-results__option {
+    font-size: 16px;
+    margin-bottom: 0;
+    transition: none !important;
+  }
+  .select2-search--dropdown {
+    display: none;
+  }
+  .select2-dropdown {
+    top: 36px;
+  }
+  .select2-results__option[aria-selected=true] {
+    background-color: #ffffff !important;
+  }
+  .select2-results__option--highlighted[aria-selected] {
+    background-color: #0073aa !important;
+    color: #fff;
+    transition: none !important;
+  }
+  &.select2-container--open .select2-dropdown .select2-results__option {
+    padding: 10px 12px!important;
+  }
+}
+  // Default submit button
+  #ipt_fsqm_form_6_button_container {
+    background-color: #ffffff;
+    & .ipt_fsqm_form_button_submit {
+      display: none;
+    }
+  }
+// Thumbnail option selection
+
+@include custom-breakpoint($max: 767px) {
+  .select2-container--eform-material {
+    .select2-dropdown {
+      top: 48px;
+    }
+  }
+}
+@include custom-breakpoint($max: 539px) {
+  #ipt_fsqm_form_6 {
+    // Center options
+    .ipt_uif_thumbselect_wrap {
+      flex-basis: 100%;
+      text-align: center;
+      &:first-child {
+        text-align: center;
+      }
+      
+      // Remove hover and selected transform on mobile (as they stack so get too close to each other)
+      & input[type="radio"] + label {
+        &:hover {
+          transform: translateY(0);
+        }
+      }
+
+      & input[type="radio"]:checked + label {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+@include breakpoint(small-phone) {
+  #ipt_fsqm_form_6 {
+    // Hide file name on very small devices
+   .ipt_fsqm_fileuploader_list .template-download td:nth-child(2) {
+     display: none;
+   }
+  }
+}
+#ipt_fsqm_form_6_button_submit {
+ background-color: #424242;
+ &:hover {
+   background-color: black;
+ }
+}
+
+/******************************************
+Success Message
+******************************************/
+.ipt_fsqm_form_message_success {
+  box-shadow: none!important;
+  & .ui-helper-reset {
+    display: none!important;
+  }
+  & .ui-widget-content.ipt_fsqm_sm_meta {
+    background-color: #fff5e2!important;
+    border-radius: 10px;
+    border: 1px solid #ffd890;
+
+    & p {
+      padding-bottom: 0;
+    }
+  }
+}
+
+
+// Common
+// @include custom-breakpoint($max: 539px) {
+
+// }
+// .woocommerce-multi-currency {
+//   font-size: 14px;
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+// }
+
+
+// @include media-breakpoint-down(xs) {
+//   .ipt-uif-custom-material-custom .ui-tabs .ui-tabs-panel {
+//     padding: 8px 12px !important;
+//   }
+// }

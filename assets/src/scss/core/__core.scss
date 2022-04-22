@@ -1,0 +1,27 @@
+/******************************************
+Core Style imports
+- Optionally imported in theme style.scss
+- Or style.scss will import specific admin styles, whichever appropriate
+******************************************/
+
+@import "variables";
+@import "functions";
+@import "mixins";
+@import "breakpoints";
+@import "reset";
+@import "accessibility";
+@import "typography";
+@import "spinner";
+@import "badge";
+@import "utilities";
+@import "icons";
+@import "images";
+@import "links";
+@import "lists";
+@import "accordions";
+@import "forms";
+@import "buttons";
+@import "callout";
+@import "layout"; // <- added last to ensure classes prioritized
+
+

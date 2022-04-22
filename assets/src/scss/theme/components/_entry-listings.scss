@@ -1,0 +1,68 @@
+/******************************************
+Overview: Table of Contents (TOC)
+******************************************/
+.entry-listings {
+  padding-left: 1.4em;
+  border-left: 1px solid #D8E7FF;
+  margin-bottom: 2rem;
+  font-size: 1em;
+}
+.entry-listings__item {
+  line-height: 1.6;
+  margin-bottom: .6em;
+  position: relative;
+  // display: flex;
+  // word-wrap: break-word;         /* All browsers since IE 5.5+ */
+  // overflow-wrap: break-word;     /* Renamed property in CSS3 draft spec */
+
+  & > a {
+  @include link(
+    $color: $color__primary,
+    $decoration: underline,
+    $hover-color: $color__link-hover
+  );
+  position: relative;
+  padding-left: 1.6em;
+  display: table-cell; // <- table-cell instead of block so doesn't wrap under icon AND so doesn't spread 100% across container making link clickable on empty space rather than just the text (like display: block does)
+
+  }
+  // Highlights the 'New' flag
+  // & > a:hover .entry-listings__flag {
+  //   color: $color__link-hover;
+  // }
+
+  & > a:before {
+    // @include icon('open-book-outline', 1em, false);
+    // color: #B1BFCA;
+    content: "📝";
+    margin-right: .6em;
+    display: inline-block;
+    position: absolute;
+    top: .1em;
+    left: 0;
+    text-decoration: underline; // <- IE Fix: To stop underline on :before, 'underline' needs to be initially set here and then the same rule duplicated below but set to none... I KNOW!
+  }
+  & > a:before {
+    text-decoration: none; // <- IE Fix: See note above...
+  }
+}
+.entry-listings__all-articles-link {
+  @include link(
+    $color: #879DAF,
+    $decoration: none,
+    $icon: 'arrow-long-right'
+  );
+}
+.entry-listings__flag {
+  border: 1px solid;
+  border-radius: .3em;
+  font-size: .7em;
+  padding: 0 .25em;
+  color: #b5acff;
+  margin-left: .75em;
+  display: inline-block;
+  line-height: 1.3em;
+  vertical-align: middle;
+  position: relative;
+  top: -.1em;
+}

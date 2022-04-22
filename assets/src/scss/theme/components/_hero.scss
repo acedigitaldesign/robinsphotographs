@@ -1,0 +1,79 @@
+/******************************************
+Hero
+******************************************/
+.hero {
+	background-color: $color__primary;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	height: $height__hero-desktop;
+
+	// height: $height__hero-desktop + $height__site-header-desktop; // Used if absolute header
+	padding-top: $height__site-header-desktop; // Used if absolute header
+	
+
+	// Used as semi-transparent overlay if using photos as hero bg.
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		// background-color: $color__primary-menu;
+		// background-color: #030f17;
+		opacity: .5;
+
+	}
+}
+.hero__content {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.hero__title {
+	@include separator('center','after', rgba(255, 255, 255, .15));
+	color: #ffffff;
+	margin-bottom: 0;
+	// top: -.6rem;
+	&:after {
+			bottom: -1rem;
+	}
+}
+@include breakpoint(phone) {
+  .hero {
+		text-align: left;
+		&:after {
+			background-position: -200px;
+		}
+	}
+	.hero__title {
+		// padding-top: .7rem;
+		&:after {
+			left: $margin__phone;
+		}
+		// @include separator('left','after', #cadeff);
+	}
+}
+
+
+@include breakpoint(tablet) {
+	.hero {
+		height: $height__hero-tablet + $height__site-header-tablet;
+	}
+	body.transparent-header .hero__content {
+		position: relative;
+		top: ($height__site-header-tablet/5)*-1;
+	}
+}
+@include breakpoint(phone) {
+	.hero {
+		height: $height__hero-mobile + $height__site-header-mobile;
+	}
+	body.transparent-header .hero__content {
+		position: relative;
+		top: ($height__site-header-mobile/5)*-1;
+	}
+}

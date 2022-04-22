@@ -1,0 +1,72 @@
+/******************************************
+Image component
+******************************************/
+.image-link {
+  @include link-unstyled;
+  height: 100%;
+  line-height: 0;
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  max-width: 100%;
+}
+.image-wrapper {
+  line-height: 0;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+img {
+  max-width: 100%;
+  &.lightbox {
+    cursor: zoom-in;
+  }
+  &.border {
+    border: 2px solid #E4EEF7;
+  }
+}
+
+.content {
+  & img {
+    // width: 100%; // IE11 fix - won't act responsively on ie11 if this not set
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@include breakpoint(phone) {
+  .content {
+    .image-link {
+      width: 100%;
+
+      & img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+.wp-block-image {
+	margin-bottom: 1.6rem;
+	
+	& figcaption {
+		font-style: italic;
+		font-size: .85em;
+		text-align: center;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+	}
+  &.is-rounded img {
+    border-radius: 9px;
+  }
+  &.has-border img {
+      border: 1px solid #eeeeee;
+  } 
+}
+
+// Photoswipe lightbox caption text
+.pswp__caption__center {
+  max-width: 500px;
+}
+

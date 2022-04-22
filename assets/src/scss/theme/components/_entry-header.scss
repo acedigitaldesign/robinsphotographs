@@ -1,0 +1,98 @@
+/******************************************
+Entry Header
+******************************************/
+.entry-header {
+  text-align: center;
+}
+.entry-header__title {
+   margin-bottom: 1rem;
+   max-width: 905px;
+   margin-left: auto;
+   margin-right: auto;
+}
+.entry-header__content {
+  max-width: 850px;
+}
+@include media-breakpoint-only(s) {
+  div.entry-header__title {
+    max-width: 100%;
+  }
+}
+@include media-breakpoint-only(xs) {
+  .entry-header {
+    text-align: left;
+  }
+}
+
+
+/******************************************
+Entry Header: Nav 
+- ie. next/previous post buttons
+******************************************/
+.entry-header__nav {
+  float: right;
+  font-size: .8rem;
+  position: relative;
+  top: .4rem;
+  // margin-left: 0;
+  // position: absolute;
+  // top: 50%;
+  // transform: translateY(-50%);
+  // width: 100%;
+  // left: 0;
+  z-index: 0; // <- Sits it below the other entry-header elements so they are still selectable
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  right: 0;
+
+    & > span:last-child {
+      margin-left: .6em;
+    }
+
+}
+.entry-header__nav-item {
+  // vars:
+  $post-nav__font-size: 1.1em;
+  $post-nav__size: 1.6em;
+  $post-nav__border-weight: $post-nav__font-size * 0.06;
+
+  font-size: $post-nav__font-size;
+  color: #99ACBB;
+
+  & > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $post-nav__size;
+    height: $post-nav__size;
+    border-radius: $post-nav__size;
+    border: $post-nav__border-weight solid #99ACBB;
+    transition: background-color 150ms, color 150ms, border 150ms;
+
+    &:hover {
+      background-color: $color__primary;
+      color: #ffffff;
+      border-color: $color__primary;
+    }
+  }
+}
+.entry-header__nav-item.-previous {
+  float: left;
+
+  & > a:before {
+    @include icon('chevron-thin-left', 1em, false);
+    position: relative;
+    left: -0.06em;
+  }
+}
+.entry-header__nav-item.-next {
+  float: right;
+
+  & > a:before {
+    @include icon('chevron-thin-right', 1em, false);
+    position: relative;
+    right: -0.06em;
+  }
+}

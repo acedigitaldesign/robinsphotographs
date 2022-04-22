@@ -1,0 +1,35 @@
+.team {
+  display: flex;
+  font-size: 16px
+}
+.team__member {
+  &:first-child {
+    margin-right: 5%;
+  }
+  color: $color__dark;
+}
+.team__member-name {
+  font-family: $font-family__body;
+  margin-bottom: 0;
+  font-size: 1em;
+  font-weight: 400;
+}
+.team__member-role {
+  text-transform: uppercase;
+  font-size: .8em;
+  color: inherit;
+}
+.team__member-photo {
+  img {
+    border-radius: 900px;
+    border: 6px solid #e7e7e7;
+  }
+}
+.team__qualifier {
+  margin-top: 16px;
+  margin-left: 22px;
+  font-size: 1em;
+}
+.team__qualifier-text {
+  margin-left: 10px;
+}

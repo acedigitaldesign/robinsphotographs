@@ -1,0 +1,15 @@
+/******************************************
+Admin Styles imports
+- Compiles to style-admin.css in assets folder
+******************************************/
+@import "theme/abstracts/variables";
+
+@import "core/variables";
+@import "core/functions";
+@import "core/mixins";
+@import "core/spinner";
+@import "core/icons";
+
+@import "core/_admin/_core-admin";
+
+

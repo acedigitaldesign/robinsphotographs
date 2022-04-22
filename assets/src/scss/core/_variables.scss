@@ -1,0 +1,152 @@
+/******************************************
+Variables - Theme naming
+******************************************/
+$theme-title: "Robins Photographs" !default;
+$themeSlug: 'robinsphotographs' !default;
+
+$theme-directory: '/wp-content/themes/' + $themeSlug !default;
+$theme-directory__css: $theme-directory + '/assets/dist/css/' !default;
+$theme-directory__images: $theme-directory + '/assets/dist/images/' !default;
+$theme-directory__js: $theme-directory + '/assets/dist/js/' !default;
+$theme-directory__fonts: $theme-directory + '/assets/dist/fonts/' !default;
+
+@debug $theme-directory;
+@debug $theme-directory__fonts;
+/******************************************
+Layout
+******************************************/
+$width__site-content: 1100px !default;
+$width__medium-content: 900px !default;
+$width__narrow-content: 640px !default;
+
+$height__site-header-primary-menu-desktop: 90px !default;
+$height__site-header-primary-menu-tablet: 90px !default;
+$height__site-header-primary-menu-mobile: 70px !default;
+$height__site-header-secondary-menu: 0 !default; // Set to 0 if not used
+
+$height__site-header-desktop: $height__site-header-primary-menu-desktop + $height__site-header-secondary-menu;
+$height__site-header-tablet: $height__site-header-primary-menu-desktop + $height__site-header-secondary-menu;
+$height__site-header-mobile: $height__site-header-primary-menu-desktop + $height__site-header-secondary-menu;
+
+$height__hero-desktop: 150px !default;
+$height__hero-tablet: 150px !default;
+$height__hero-mobile: 120px !default;
+
+$margin__large-desktop: 2rem !default;
+$margin__desktop: 2rem !default;
+$margin__tablet: 1.6rem !default;
+$margin__phone: 1.2rem !default; 
+
+$margin-condensed__large-desktop: $margin__large-desktop * .7 !default;
+$margin-condensed__desktop: $margin__desktop * .7 !default;
+$margin-condensed__tablet: $margin__tablet * .8 !default;
+$margin-condensed__phone: $margin__phone * .9 !default;
+
+$i: unquote('!important');
+
+$margin-bottom: 1.666667em; // <- 30px of bottom margin for paragraphs, images etc
+
+/******************************************
+Typography
+******************************************/
+$font-family__headings: 'Nunito' !default;
+$font-family__body: 'Nunito' !default;
+$font-family__buttons: 'Nunito' !default;
+
+$font-size__body: 18px !default;
+$font-size__primary-menu: 15px !default;
+$font-size__secondary-menu: 13px !default;
+$font-size__mobile-menu: 16px !default;
+$font-size__footer: 15px !default;
+$font-size__copyrights: 13px !default;
+
+$line-height__body: 1.65 !default;
+$line-height__heading: 1.1 !default;
+
+$font__margin-top-heading: 1.5rem !default;
+$font__margin-bottom-p: 1.4rem !default;
+
+$font-size__h1: 45px !default;
+$font-size__h2: 36px !default;
+$font-size__h3: 22px !default;
+$font-size__h4: 1rem !default;
+$font-size__h5: 1rem !default;
+$font-size__h6: 1rem !default;
+
+$font-family__footer-headings: $font-family__headings !default;
+
+/******************************************
+Theme colors
+******************************************/
+// Color Names:
+$color__shuttle-gray: #60656f;
+$color__mirage: #1E1F38;
+$color__alice-blue: #f0f8ff;
+$color__bali-hai: #879DAF;
+$color__black: #000000;
+$color__white: #ffffff;
+
+
+// Color Application
+$color__primary: #467cbf !default;
+$color__secondary: #93c2ff !default;
+$color__neutral: #788a99 !default;
+$color__accent: #FBAC33 !default;
+$color__light: $color__white !default;
+$color__dark: $color__black !default;
+$color__body: $color__shuttle-gray !default;
+$color__heading: $color__mirage !default;
+$color__menu-parent: $color__mirage !default;
+$color__primary-menu: $color__white !default;
+$color__secondary-menu: #467cbf !default;
+$color__mobile-menu: #467cbf !default;
+$color__mobile-menu-toggle: $color__mirage !default;
+// $color__mobile-menu-nav-hover: #934ce5;
+$color__mobile-menu-nav-parent: #ffffff !default;
+$color__separator: #e5e0db !default;
+$color__callout: $color__alice-blue !default;
+$color__form-input: $color__shuttle-gray !default;
+$color__footer-body: $color__white !default;
+$color__footer-headings: $color__white !default;
+$color__footer: #467cbf !default;
+$color__copyrights-body: #c2c3c4 !default;
+$color__copyrights: $color__black !default;
+$color__facebook: #3B5998 !default;
+$color__twitter: #00aced !default;
+$color__pinterest: #c8232c !default;
+$color__whatsapp: #25d366 !default;
+$color__email: #000000 !default;
+$color__youtube: #ff0000 !default;
+$color__spinner-default-border: #c4c9ff !default;
+$color__spinner-default-border-left: #4072ff !default;
+
+// Links
+$color__link-primary: #286cbe !default;
+$color__link-secondary: $color__secondary !default;
+$color__link-neutral: $color__neutral !default;
+$color__link-light: #ffffff !default;
+$color__link-dark: $color__mirage !default;
+$color__link-hover: $color__mirage !default;
+
+
+/******************************************
+Misc
+******************************************/
+$border-radius__button: .4em !default;
+$font-size__button: 1em !default;
+$padding__button: .7em 1.1em !default;
+$border-radius: 8px;
+$max-width__post-content: 600px;
+
+
+
+
+// Variables and Maps used in utility classes
+$grid-breakpoints: (
+  // default: 0,
+  xs: 0,
+  s: 541px,
+  m: 769px,
+  l: 1025px,
+  xl: 1441px 
+);

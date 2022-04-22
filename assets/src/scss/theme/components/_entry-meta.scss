@@ -1,0 +1,61 @@
+/******************************************
+Entry meta
+******************************************/
+.entry-meta {
+  font-size: 14px;
+  margin-bottom: 1em;
+  line-height: $line-height__body;
+}
+.entry-meta__info {
+  color: $color__neutral;
+  font-style: italic;
+
+}
+.entry-meta__author-link {
+ @include link(
+   $color: $color__neutral
+ );
+}
+.avatar-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  // top: -2px;
+}
+.avatar-link {
+  @include image-link;
+  // width: 100%;
+}
+.avatar {
+  border-radius: 100%;
+}
+// Display when actually have enough posts to justify showing the categories and archive pages...
+.entry-meta__categories {
+  display: block;
+}
+@include media-breakpoint-only(xs) {
+  .entry-meta__date-prefix {
+    display: none; // <- so author and date can fit on one line
+  }
+}
+.entry-meta__category-list {
+  display: inline;
+}
+.entry-meta__category-item {
+  display: inline;
+  // color: $color__neutral;
+  // text-decoration: underline;
+  
+  &:not(:last-child):after {
+    content: ',';
+    color: $color__neutral;
+    // margin-right: .1em;
+  }
+
+  // & > a {
+  //   @include link(
+  //   $color: $color__neutral,
+  //   $decoration: underline
+  // );
+  // }
+}

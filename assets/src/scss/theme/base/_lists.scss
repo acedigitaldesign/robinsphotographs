@@ -1,0 +1,102 @@
+article ol:not(.list-unstyled) {
+  $bullet_size: 22px;
+  counter-reset: list-number;
+  margin-bottom: $font__margin-bottom-p;
+
+  & > li {
+    counter-increment: list-number;
+    margin-bottom: 0.2em;
+    padding-left: 2.5em;
+    position: relative;
+  }
+  & > li:before {
+    content: counter(list-number);
+    font-size: .8em;
+    position: absolute;
+    left: .4em;
+    top: .25em;
+    color: $color__primary;
+    background-color: rgba($color__primary, .12);
+    border-radius: 1em;
+    width: $bullet_size;
+    height: $bullet_size;
+    line-height: $bullet_size;
+    text-align: center;
+    font-weight: 700;
+    z-index: 1;
+    display: inline-block;
+  }
+}
+
+article ul:not(.list-unstyled) {
+  $bullet_size: 10px;
+  // font-size: .95em;
+  position: relative;
+  margin-bottom: $font__margin-bottom-p;
+  color: $color__body;
+  line-height: $line-height__body;
+
+  & > li {
+    position: relative;
+    margin-bottom: 0.2em;
+    padding-left: 2.5em;
+  }
+  & > li:before {
+    content: "";
+    position: absolute;
+    left: $bullet_size*1.5;
+    top: $bullet_size;
+    background-color: rgba($color__primary, .24);
+    border-radius: 1em;
+    width: $bullet_size;
+    height: $bullet_size;
+    line-height: $bullet_size;
+    text-align: center;
+    font-weight: 700;
+    z-index: 1;
+    display: inline-block;
+  }
+}
+
+@include media-breakpoint-only(xs) {
+  article ul:not(.list-unstyled) {
+    & > li {
+      padding-left: 1.6em;
+    }
+    & > li:before {
+      left: 5px;
+    }
+  }
+}
+
+
+// .numbered-heading {
+//   position: relative;
+//   // background-color: #fffae9;
+//   &:before {
+//     content: '';
+//     border-left: 2px solid #f43e15;
+//     position: absolute;
+//     top: 0.3em;
+//     bottom: 0.1em;
+//     left: -21.6px;
+//   }
+// }
+//   counter-reset: numbered-heading;
+//   margin-bottom: $font__margin-bottom-p;
+
+//   & > li {
+//     counter-increment: numbered-heading;
+//     margin-bottom: .3em;
+//     padding-left: 1.6em;
+//     position: relative;
+//   }
+//   & > li:before {
+//     content: counter(list-number)".";
+//     font-size: .9em;
+//     position: absolute;
+//     left: 0;
+//     line-height: inherit;
+//     top: 0.11em;
+//   }
+// }

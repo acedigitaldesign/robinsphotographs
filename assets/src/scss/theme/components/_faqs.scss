@@ -1,0 +1,21 @@
+.faqs {
+  max-width: 800px;
+
+  .accordion {
+    border-top: 1px solid gainsboro;
+    &:last-child {
+      border-bottom: 1px solid gainsboro;
+    }
+  }
+  .accordion__toggle {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 0;
+    &:after {
+      opacity: .5;
+    }
+  }
+  .accordion__content {
+    padding: 0 0 1em;
+  }
+}

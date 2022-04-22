@@ -1,0 +1,156 @@
+/******************************************
+Social icons
+// eg. used next to featured image / video
+// and in popupout scrolling down post
+******************************************/
+.share-buttons {
+  display: flex;
+  z-index: 10;
+  margin-bottom: 1.5rem;
+
+  // Stack them and position absolute for share buttons in the entry header (next to featured image / video)
+  .entry-header & {
+    flex-direction: column;
+    position: absolute;
+    // margin-left: -80px;
+    // margin-left: -7%;
+    // margin-top: 60px;
+    margin-left: -13%;
+    margin-top: -120px;
+    order: 1; // <- On small screens, share buttons look better stacked on top of the series notice. However, in the HTML the share buttons need to sit as the last thing in the header (ie. below the series notice) so that positioning them down the side of the featured image/video doesn't require JS. Therefore on smaller screens, we've got to set the entry-header__content to a flex column, so that can easily swap the order of the share button and series notice.
+  }
+}
+.share-buttons__sticky {
+  position: fixed;
+  right: 20px;
+  top: 50px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms; // <-fallback for Opera mini, doesn't support transform
+  transition: transform 600ms, opacity 800ms;
+  transform: translateX(120%);
+  transform: translate3d(120%, 0, 0);
+
+    &.-is-active {
+      opacity: 1;
+      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
+      pointer-events: auto;
+
+      
+    }
+}
+.share-buttons__item {
+  margin-bottom: .6em;
+  margin-right: .5em;
+}
+.share-buttons__item > a {
+  font-size: 16px;
+  border-radius: 6px;
+  border-width: 1px;
+  border-style: solid;
+  overflow: hidden;
+  background-color: #ffffff;
+  // color: #ffffff;
+  width: 2.4em;
+  height: 2.4em;
+  line-height: 1;
+  // padding: 1.2em;
+  display: block;
+  position: relative;
+  text-align: center;
+  transition: background-color 150ms, color 150ms;
+
+  &::before {
+    font-size: .6em;
+    position: absolute;
+    line-height: 2.4; // always same as width and height
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    // padding: .5em;
+  }
+}
+
+.share-buttons__item.-facebook > a {
+  color: $color__facebook;
+  border-color: $color__facebook;
+  &::before {
+    @include icon(facebook, 1em, false)
+  }
+  &:hover {
+    background-color: $color__facebook;
+    color: #ffffff;
+  }
+}
+.share-buttons__item.-twitter > a {
+  color: $color__twitter;
+  border-color: $color__twitter;
+  &::before  {
+    @include icon(twitter, 1em, false)
+  }
+  &:hover {
+    background-color: $color__twitter;
+    color: #ffffff;
+  }
+}
+.share-buttons__item.-pinterest > a {
+  color: $color__pinterest;
+  border-color: $color__pinterest;
+  &::before  {
+    @include icon(pinterest-full, 1em, false)
+  }
+  &:hover {
+    background-color: $color__pinterest;
+    color: #ffffff;
+  }
+}
+.share-buttons__item.-email > a {
+  color: $color__email;
+  border-color: $color__email;
+  &::before  {
+    @include icon(envelope-full, 1em, false)
+  }
+  &:hover {
+    background-color: $color__email;
+    color: #ffffff;
+  }
+}
+.share-buttons__item.-whatsapp > a {
+  color: $color__whatsapp;
+  border-color: $color__whatsapp;
+  &::before  {
+    @include icon(whatsapp-full, 1em, false)
+  }
+  &:hover {
+    background-color: $color__whatsapp;
+    color: #ffffff;
+  }
+}
+
+
+
+/******************************************
+Social icons: Media Queries
+******************************************/
+@include custom-breakpoint($max: 999px) {
+  .share-buttons {
+    margin-bottom: 1rem;
+    
+    .entry-header & {
+      flex-direction: row;
+      position: static;
+      margin-left: 0;
+      margin-top: 0;
+      // justify-content: center;
+    }
+  }
+}
+@include breakpoint(phone) {
+  .share-buttons {
+    .entry-header & {
+      justify-content: flex-start;
+    }
+  }
+}

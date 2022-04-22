@@ -1,0 +1,141 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+  font-size: 100%;
+  // font-style: normal;
+	-webkit-text-size-adjust: 100%;
+    vertical-align: baseline;
+    // color: inherit;
+}
+html {
+    overflow: auto;
+    box-sizing: border-box;
+    // height: 100%;
+  }
+  *, *:before, *:after {
+    box-sizing: inherit;
+
+  }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+cite {
+  font-style: normal;
+}
+body {
+  overflow-x: hidden;
+  // height: 100%;
+
+    &.-is-loading {
+      pointer-events: none;
+    }
+    &.scroll-disabled {
+      overflow: hidden;
+    }
+}
+ol, ul {
+	list-style: none;
+}
+li {
+	margin-bottom: .5em;
+  line-height: inherit;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+button{
+	-webkit-appearance: inherit;
+  writing-mode: horizontal-tb !important;
+  text-rendering: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  text-transform: inherit;
+  text-indent: 0px;
+  text-shadow: inherit;
+  display: inherit;
+  text-align: inherit;
+  align-items: inherit;
+  cursor: pointer;
+  background-color: inherit;
+  box-sizing: inherit;
+  margin: inherit;
+  font: inherit;
+  padding: inherit;
+  border-width: none;
+  border-style: none;
+  border-color: inherit;
+  border-image: inherit;
+  border: none;
+  background: none;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  outline: 0;
+}
+
+img {
+  image-rendering: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimizeQuality;
+}
+
+html {
+  font-family: $font-family__body;
+  font-size: $font-size__body;
+  line-height: $line-height__body;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+html, body, p {
+  color: $color__body;
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex-grow: 1;
+}
+.admin-bar .site {
+  // position: relative;
+  // display: flex;
+  // flex-direction: column;
+  min-height: calc(100vh - 32px); // In admin, makes footer appear at bottom as accounts for WP Admin bar 
+}
+i {
+  font-style: normal;
+}

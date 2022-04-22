@@ -1,0 +1,424 @@
+$height__checkout-heading: 72px;
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.checkout__header {
+  // height: $height__checkout-heading;
+  padding: 1.4rem 0;
+}
+
+
+
+.woocommerce-checkout {
+  .form-row-first, [data-o_class*="form-row-first"] {
+    float: left;
+    width: 48%;
+  }
+  .form-row-last, [data-o_class*="form-row-last"] {
+    float: right;
+    width: 48%;
+  }
+}
+.woocommerce-checkout-payment {
+  margin-top: 1em;
+}
+
+
+#customer_details {
+  .form-row {
+    margin-bottom: .8em;
+    position: relative;
+    label {
+    font-size: 0.8571428571em;
+    font-weight: normal;
+    position: absolute;
+    // top: 0;
+    width: 100%;
+    margin-top: 0.4285714286em;
+    margin-left: 1px;
+    padding: 0 0.9166666667em;
+    z-index: 1;
+    user-select: none;
+    // transform: translateY(3px);
+    pointer-events: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    opacity: 0;
+    }
+  }
+}
+
+
+// .paypal-button-number-1, .paypal-button-number-2 {
+//   display: none;
+// }
+
+// #order_review {
+//   background: #F6F5F4;
+//   padding: .9rem 1.4rem;
+//   border-radius: 12px;
+// }
+
+
+
+
+
+.woocommerce form .form-row.woocommerce-invalid .select2-container .select2-selection--single, 
+.woocommerce form .form-row.woocommerce-invalid input.input-text, 
+.woocommerce form .form-row.woocommerce-invalid select {
+  border-color: $color__primary;
+}
+
+// // Clears float of preceding name fields. If not set, both fields are obscured and not clickable
+// .woocommerce-checkout #billing_country_field, 
+// .woocommerce-checkout #shipping_country_field,
+// .woocommerce-checkout #shipping_company_field {
+//   clear: both;
+// }
+
+
+// Form field float clears
+.woocommerce-checkout {
+  #checkout__billing.checkout__section-heading, 
+  #billing_address_1_field,
+  #shipping_country_field,
+  #shipping_company_field,
+  .checkout__col1 .col-2,
+  .woocommerce-checkout-payment {
+    clear: both;
+  }
+}
+
+.wc_payment_method {
+// Custom radio styling
+  > input[type=radio]  {
+    position: absolute;
+    opacity: 0;
+  }
+  > input[type=radio] ~ label:before {
+    position: absolute;
+    left: 10px;
+    // top: 2px;
+    content: '';
+    width: 1em;
+    height: 1em;
+    border: solid 1.75px rgba(151,151,151,0.5);
+    background-color: #ffffff;
+    box-sizing: border-box;
+    border-radius: 50%;
+  }
+  > input:checked[type=radio] ~ label:before {
+    // background-color: $color__primary;
+    // box-shadow: inset 0 0 0 2px $color__primary ,inset 0 0 0 4px white;
+    background-color: rgb(44, 177, 238);
+    box-shadow: inset 0 0 0 2px rgb(44, 177, 238) ,inset 0 0 0 4px white;
+    border: none;
+  }
+
+  > input[type=radio] ~ label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 1px solid #dfdfdf;
+    background: #f7f7f7;
+    padding: .5em .75em;
+    padding-left: 35px;
+    width: 100%;
+    border-radius: 6px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  > input:checked[type=radio] ~ label {
+    border: 1px solid #97e7b0;
+    background: rgb(246, 253, 248);
+  }
+
+  [for="payment_method_eh_paypal_express"] {
+    img {
+      display: none;
+    }
+  }
+
+
+
+}
+
+
+// Checkbox styling
+input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+}
+.checkbox span {
+  display: flex;
+  align-items: center;
+}
+.woocommerce-checkout .woocommerce-form__label-for-checkbox {
+  line-height: 1.75em !important;
+  display: block !important;
+  position: relative;
+}
+.woocommerce-checkout .woocommerce-form__label-for-checkbox input[type=checkbox] ~ span:not(.required) {
+  padding-left: 25px;
+  &:before {
+    position: absolute;
+    left: 0;
+    // top: 11px;
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: solid 1.75px rgba(151,151,151,0.5);
+    background-color: #ffffff;
+    box-sizing: border-box;
+    font-size: .5em;
+  }
+}
+.woocommerce-checkout .woocommerce-form__label-for-checkbox input[type=checkbox]:checked ~ span:not(.required):before {
+  position: absolute;
+  // left: 0;
+  // top: calc(0.875em - 8px);
+  width: 16px;
+  height: 16px;
+  border: solid 1.75px rgba(151,151,151,0.5);
+  // background-color: #ffffff;
+  box-sizing: border-box;
+  border: none;
+  background: $color__primary;
+  @include icon('tick-thin', .6em, false);
+  color: white;
+  text-align: center;
+  line-height: 16px; // height of checkbox
+  padding-left: 1px;
+}
+
+
+// Style headings
+.woocommerce-checkout {
+  h3 {
+    font-family: inherit;
+    font-size: 20px;
+  }
+}
+
+// Shipping styles
+#ship-to-different-address {
+  font-size: 15px;
+  font-weight: 400;
+  z-index: 1;
+
+  & label:hover {
+    cursor: pointer!important;
+  }
+}
+
+// Terms
+.woocommerce-privacy-policy-text {
+  font-size: 12px;
+  margin-top: .5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  opacity: .8;
+  p {
+    line-height: 1.4;
+  }
+}
+@include breakpoint(phone) {
+  .woocommerce-privacy-policy-text {
+    text-align: center;
+  }
+}
+
+// Stripe description
+#stripe-payment-data {
+  > p {
+    display: none; // sandbox text
+  }
+  label[for="card-element"] {
+    display: none;
+  }
+}
+
+#payment {
+  .wc-stripe-elements-field, .wc-stripe-iban-element-field {
+    padding: .65em .75em;
+    border-radius: 6px;
+    margin-top: 0.8em;
+  }
+}
+
+
+
+// General Woo
+// Required to make content stretch to full height
+// .woocommerce {
+//   display: flex;
+//   flex-grow: 1;
+// }
+
+
+// Payment methods
+.payment_method_eh_paypal_express p {
+  display: none;
+}
+
+// input.InputElement {
+//   &::placeholder {
+//     color: black!important;
+//     opacity: 1;
+//   }
+// }
+
+#stripe-card-element.StripeElement.empty {
+  background: #ffffff30 !important;
+  }
+  #stripe-exp-element.StripeElement.empty {
+  background: #ffffff30 !important;
+  }
+  #stripe-cvc-element.StripeElement.empty {
+  background: #ffffff30 !important;
+  }
+
+
+  #payment-options.checkout__section-heading {
+    display: none;
+  }
+
+
+
+
+
+
+
+
+
+///////////// 2.0
+// .woocommerce-checkout #customer_details {
+//   width: 48%;
+//   float: left;
+// }
+// .woocommerce-checkout #order_review {
+//   float: left;
+//   width: 48%;
+//   margin-left: 4%;
+//   box-sizing: border-box;
+// }
+.woocommerce-checkout {
+  // #customer-details {
+    .col-1, .col-2 {
+      padding: 0;
+      width: 100%;
+    }
+  // }
+}
+.page-template-page-checkout .site-header-simple .image-wrapper {
+  text-align: left;
+}
+.order-summary {
+  font-size: 15px;
+  border: 1px solid #e5eaed;
+  border-radius: 8px;
+}
+.checkout__col2 {
+  z-index: 2;
+}
+.order-summary__add-photos {
+  font-size: 13px;
+  float: right;
+  a {
+    @include link (
+      $color: #c4c4c4, 
+      $decoration: none, 
+      $hover-color: $color__dark
+    );
+    &:before {
+      @include icon(cross-thin, .65em, false);
+      display: inline-block;
+      transform: rotate(45deg);
+      position: relative;
+      top: -1px;
+      margin-right: 0.4em;
+    }
+  }
+}
+
+// Customer Details columm
+.checkout__customer-details .col-2 {
+  width: 100%;
+}
+
+.payment-networks {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.payment-network__item {
+  display: flex;
+  flex-basis: 19%;
+  padding: 0 3%;
+  max-width: 100px;
+  align-items: flex-start; // Safari fix - stops the images from stretching full height of container...
+
+  &.-is-paypal {
+    flex-basis: 24%;
+    padding-left: 0;
+    min-width: 70px;
+    max-width: 140px;
+  }
+  &.-is-mastercard {
+    flex-basis: 17.8%;
+    max-width: 92px;
+  }
+  &.-is-amex {
+    padding-right: 0;
+    min-width: 50px;
+  }
+}
+.secure-checkout {
+  font-size: .92em;
+  &:before {
+    padding-right: 5px;
+  }
+}
+
+
+// Submit button
+.woocommerce-checkout .button-primary {
+  font-size: 1.05em;
+  &:after {
+    font-weight: 400;
+    padding-left: 8px;
+    top: -1px;
+  }
+}
+
+// Save payment method tick box
+.woocommerce-SavedPaymentMethods-saveNew {
+  display: none !important;
+}
+
+
+
+
+
+// Paypal express plugin
+.eh_paypal_express_seller_policy {
+  display: none;
+}
+// Fix for Safari and Firefox not floating these fields correctly
+#billing_state_field, #shipping_state_field {
+  clear: left;
+}

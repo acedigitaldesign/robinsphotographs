@@ -1,0 +1,99 @@
+/******************************************
+Quotes
+******************************************/
+.quote {
+  padding-left: 2.5em;
+  margin-bottom: 1.6em;
+  position: relative;
+  
+  &::before{
+    @include icon('open-quote', 1.7em, false); 
+    color: $color__cashmere;
+    line-height: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    // opacity: .6;
+  }
+}
+.quote__text {
+  width: 85%;
+  color: inherit;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.05em;
+  line-height: 1.6;
+  margin-bottom: 0.8em;
+}
+.quote__footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  text-align: right;
+}
+.quote__author-info {
+  order: 1;
+  margin-left: auto;
+  width: 50%;
+}
+.quote__author {
+  font-weight: 700;
+  font-style: normal;
+}
+.quote__role {
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: .8em;
+}
+.quote__source {
+  font-size: .8em;
+  font-weight: 300;
+  font-style: italic;
+  width: 50%;
+  text-align: left;
+  line-height: 1.6;
+
+  & a {
+    @include link();
+  }
+}
+
+/******************************************
+Quotes: Media Queries
+******************************************/
+@include media-breakpoint-down(m) {
+  .quote__text {
+    width: 100%;
+    font-size: 1.1em;
+  }
+  .quote__footer {
+    display: block;
+  }
+  .quote__author-info {
+    width: 100%;
+    order: 0;
+  }
+  .quote__source {
+    width: 100%;
+    text-align: right;
+  }
+}
+@include media-breakpoint-only(xs) {
+  .quote {
+    // border-left-width: .8em;
+    // margin-left: $margin__phone * -1;
+    padding-left: 0;
+
+    &::before{
+      position: static;
+      float: left;
+      margin-top: -.06em;
+      margin-right: .4em;
+    }
+  }
+
+  // .quote__footer {
+  //   width: 100%;
+  // }
+}

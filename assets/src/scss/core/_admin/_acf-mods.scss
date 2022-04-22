@@ -1,0 +1,59 @@
+/******************************************
+ACF General mods
+******************************************/
+// Cap width of acf postbox fields in post/page editors
+.acf-postbox {
+  max-width: 900px;
+}
+// Set required astericks next to label
+.postbox-header h2.-is-required {
+  display: block;
+}
+// footnotes
+#acf-group_6223688ac80ce {
+  margin-left: auto;
+  margin-right: auto;
+  table {
+    td.acf-fields {
+    display: flex;
+    flex-wrap: wrap;
+    }
+    div.acf-field {
+      width: 33%;
+    }
+    div[data-name="footnote_text"] {
+      width: 100%;
+      min-height: 0;
+    }
+    .acf-field .acf-label {
+      font-size: 14px;
+    }
+  }
+
+}
+// image credits
+#acf-group_6222289cb3c69 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// // Hides ACF field label
+// [data-name="overview_panel_toggle"] > .acf-label {
+//   display: none;
+// }
+// Hides ACF field label (not including acf instruction)
+// (adding acf-field class specifier to ensure priority)
+// [data-name="uid"] > .acf-label > label {
+//   display: none !important;
+// } 
+// [data-name="associated_posts_resources"] {
+//   & > .acf-label {
+//     display: none;
+//   }
+//   &:before {
+//     display: none !important;
+//   }
+//   & > .acf-input {
+//     width: 100% !important;
+//   }
+// } 

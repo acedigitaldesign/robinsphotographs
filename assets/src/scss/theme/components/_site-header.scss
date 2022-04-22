@@ -1,0 +1,365 @@
+/******************************************
+Site Header
+******************************************/
+.site-header {
+  width: 100%;
+  // background: $color__primary-menu;
+  // position: absolute;
+  // z-index: 1;
+  // top: 0;
+
+  // & + * {
+  //   margin-top: $height__site-header-desktop; // Used if absolute header
+  // }
+  
+  &.is-light {
+    background: rgba($color__primary-menu, 1);
+    .logo__dark {
+      display: none;
+    }
+    .button-outline-light {
+      display: none;
+    }
+  }
+
+  &.is-dark {
+    color: $color__light;
+    background: rgba($color__primary-menu, 1);
+    .logo__light {
+      display: none;
+    }
+    .wmc-text {
+      color: $color__light;
+    }
+    .wmc-open-dropdown-currencies {
+      color: $color__light;
+    }
+    .button-outline-primary {
+      display: none;
+    }
+    .primary-menu__mobile-menu-toggle {
+      color: $color__light;
+    }
+  }
+  &.is-transparent {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    background: rgba($color__primary-menu, 0);
+    & + * {
+      margin-top: 0; // Used if absolute header
+    }
+  }
+}
+
+// fix for admin - obscured by admin bar when logged in (only needed when absolute-header (ie. when transparent)
+.admin-bar .site-header.is-transparent {
+  margin-top: 32px;
+}
+
+// .content {
+//   padding-top: $height__site-header-desktop; // Used if absolute header
+// }
+
+// .primary-menu__logo .image-wrapper {
+//   position: relative;
+//   top: -4px;
+// }
+
+/******************************************
+Site Header - Secondary Menu
+******************************************/
+.secondary-menu {
+  font-size: $font-size__secondary-menu;
+  background-color: $color__secondary-menu;
+  height: $height__site-header-secondary-menu;
+}
+
+/******************************************
+Site Header - Primary Menu
+******************************************/
+.primary-menu {
+  font-size: $font-size__primary-menu;
+}
+.primary-menu__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $height__site-header-desktop;
+}
+.primary-menu__nav-list {
+  display: flex;
+  align-items: center;
+}
+.primary-menu__nav-list > li {
+  color: inherit;
+  padding: 0 1.7em;
+  margin-bottom: 0;
+  position: relative;
+}
+.primary-menu__nav-list {
+  &.-left > li:first-child {
+      padding-left: 0;
+    }
+  &.-right > li:last-child {
+    padding-right: 0;
+  }
+}
+.primary-menu__mobile-menu-toggle {
+
+  & a::before {
+    @include icon('burger-menu', 1.3rem, false);
+    color: $color__menu-parent;
+  }
+}
+
+.primary-menu__nav-list > .menu-item {
+
+  & a {
+
+    &:visited,
+    &:link,
+    &:focus {
+
+      @include link-unstyled;
+      text-align: center;
+      position: relative;
+      transition: color 250ms;
+      height: 100%;
+      /* line-height: 0; */
+      display: inline-block;
+      vertical-align: top;
+      font-weight: 400;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 0px;
+        height: 2px;
+        left: 0;
+        transition: width 250ms;
+        // opacity: 0;
+        background-color: $color__primary;
+      }
+    }
+
+    &:active,
+    &:hover {
+      cursor: pointer;
+      color: black;
+    
+        &:after {
+          width: 100%;
+          opacity: 1;
+        }
+    }
+  }
+
+  &.current_page_item > a {
+    &:after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+}
+@include media-breakpoint-up(m) {
+  li.primary-menu__cart {
+    padding-right: 0;
+  }  
+}
+
+.primary-menu__cta {
+  flex-shrink: 0;
+  // &:before{
+  //   content: "";
+  //   width: 1px;
+  //   height: 10px;
+  //   background-color: gainsboro;
+  //   display: inline-block;
+  //   position: absolute;
+  //   left: -10px;
+  //   top: 15px;
+  }
+.primary-menu__cart {
+  a {
+    position: relative;
+    display: inline-block;
+    &:hover,
+    &:active {
+      .cart-icon__counter {
+        background-color: $color__dark;
+      }
+    }
+    padding-left: .8em;
+    padding-right: .8em;
+  }
+  .cart-icon__counter {
+    $counter_size: 1.4em;
+    font-size: 11px;
+    font-weight: 700;
+    width: $counter_size;
+    height: $counter_size;
+    line-height: $counter_size;
+    border-radius: $counter_size;
+    color: #fff;
+    text-align: center;
+    background: $color__primary;
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    right: .2em;
+    
+    &.is-hidden {
+      display: none;
+    }
+  }
+}
+
+
+// .primary-menu__mobile-menu-toggle {
+//   &:before{
+//     content: "";
+//     width: 1px;
+//     height: 10px;
+//     background-color: gainsboro;
+//     display: inline-block;
+//     position: absolute;
+//     left: -10px;
+//     top: 15px;
+//   }
+// }
+//   }
+// }
+// ALTERNATIVE - Different border colour on active page and still changes on hover
+// .primary-menu__nav-item.current_page_item > a {
+//   &:after {
+//     width: 100%;
+//     opacity: 1;
+//     background-color: rgba($color__menu-parent,.5);
+//   }
+//   &:hover:after {
+//     background-color: rgba($color__primary, 1);
+//   }
+// }
+
+li.primary-menu__mobile-menu-toggle {
+  color: $color__mobile-menu-toggle;
+  padding: 0;
+}
+
+/******************************************
+Site Header - Primary Menu Sub Menu
+******************************************/
+.primary-menu .sub-menu {
+  position: absolute;
+  // margin-top: 1em;
+  padding-top: 1.2em;
+  opacity: 0;
+  // height: 0;
+  transition: all 400ms;
+  pointer-events: none;
+  z-index: 200;
+
+  &:hover {
+    opacity: 1;
+    // visibility: 1;
+    height: auto;
+    pointer-events: auto;
+  }
+}
+.primary-menu .sub-menu__list {
+  border-radius: .5em;
+  overflow: hidden;
+  box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.66);
+
+  & > li {
+  margin-bottom: 0;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+
+    &:not(:first-child) {
+      border-top: 1px solid #E5E5ED;
+    }
+
+    & > a {
+      @include link(
+        $color: black,
+        $decoration: none,
+        $hover-color: black,
+        $hover-decoration: none
+      );
+      padding: .8em 1em;
+      width: 100%;
+      transition: background-color 200ms;
+
+      &:hover {
+        background-color: #e7ebef;
+      }
+    }
+  }
+}
+.menu-item-has-children:hover > a + .sub-menu {
+  opacity: 1;
+  // visibility: visible;
+  height: auto;
+  transition: all 400ms;
+  pointer-events: auto;
+
+    // &:after {
+    //   width: 100%;
+    //   opacity: 1;
+    // }
+}
+.primary-menu .menu-item-has-children {
+  &:after {
+    @include icon('triangle-pointer-right', 1em, false);
+    transform: rotate(90deg);
+    color: darken(white, 60%);
+    display: inline-block;
+  }
+}
+/******************************************
+Site Header - Media Queries
+******************************************/
+.primary-menu__mobile-menu-toggle {
+  display: none;
+}
+// @include custom-breakpoint($min: 850px, $max: 1099px) {
+//   .primary-menu__logo img {
+//     width: 130px;
+//   }
+//   .primary-menu__nav-list {
+//     &.-center > :first-child {
+//       display: none;
+//     }
+//     & .button {
+//       min-width: 0;
+//     }
+//     & > li {
+//       padding: 0 1.2em;
+//     }
+//   }
+// }
+@include media-breakpoint-down(m) {
+  .primary-menu__mobile-menu-toggle {
+    display: block;
+  }
+  .primary-menu .menu-item {
+    display: none;
+  }
+
+}
+@include media-breakpoint-down(s) {
+  .primary-menu__cta {
+    display: none;
+  }
+  .primary-menu__row {
+    height: 70px;
+  }
+  .primary-menu__logo {
+    max-width: 170px
+  }
+}

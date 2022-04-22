@@ -1,0 +1,18 @@
+/******************************************
+Style imports
+******************************************/
+
+// Theme variables must be imported before core variables (in order to faciliate theme-specific overrides)
+@import "../../theme/abstracts/variables";
+
+
+// Core (import all of core or just the individual parts as needed)
+@import "../../core/variables";
+@import "../../core/breakpoints";
+@import "../../core/functions";
+
+
+// Theme
+@import "page-photo-restoration";
+
+

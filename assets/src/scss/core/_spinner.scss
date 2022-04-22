@@ -1,0 +1,85 @@
+/******************************************
+Loaders
+******************************************/
+@mixin spinner($size:2em, $opacity: 1, $border-width: 4px) {
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+  top: 50%;
+  left: 50%;
+  content: "";
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+  text-indent: -9999em;
+	animation: spinner .75s infinite linear;
+	opacity: $opacity;
+  border: $border-width solid lighten($color__cocoa, 70); // use px instead of em as loader seems to 'wobble' if em = fraction px's...
+  border-left-color: lighten($color__cocoa, 40);
+  &:after {
+    border-radius: 50%;
+    width: $size;
+    height: $size;
+  }
+  @keyframes spinner {
+    0% {
+      // -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      // -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+
+}
+.spinner-container {
+	position: absolute;
+	z-index: 100;
+}
+.spinner-loader-product-filter {
+  top: 124px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.spinner {
+  @include spinner;
+}
+
+[data-loading="true"] {
+  pointer-events: none !important;
+}
+
+@mixin button-spinner($size:2em, $opacity: 1, $border-width: 2px, $color: #ffffff) {
+  content: "";
+  border-radius: 50%;
+  width: $size;
+  height: $size;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+  margin-left: .2em;
+  text-indent: -9999em;
+	animation: spinner .75s infinite linear;
+	opacity: $opacity;
+  border-width: $border-width; // use px instead of em as loader seems to 'wobble' if em = fraction px's...
+  border-style: solid;
+  border-color: rgba($color, .5); 
+  border-left-color: rgba($color, 1);
+  &:after {
+    border-radius: 50%;
+    width: $size;
+    height: $size;
+  }
+  @keyframes spinner {
+    0% {
+      // -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      // -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+}

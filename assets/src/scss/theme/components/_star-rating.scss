@@ -1,0 +1,27 @@
+/******************************************
+Star Ratings
+******************************************/
+.star-rating {
+  display: flex;
+
+  & > :last-child {
+    padding-right: 0; 
+  }
+}
+.star-rating__star {
+  $star-size: 1em;
+  color: $color__primary;
+  padding-right: .4em;
+  line-height: 1.2;
+
+  &.-is-star-rounded-outline {
+    &::before {
+      @include icon('star-rounded-outline', $star-size, false);
+    }
+  }
+  &.-is-star-rounded-full {
+    &::before {
+      @include icon('star-rounded-full', $star-size, false);
+    }
+  }
+}

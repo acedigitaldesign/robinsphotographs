@@ -1,0 +1,168 @@
+/******************************************
+Entry Header
+******************************************/
+.entry-header {
+  text-align: left;
+  @include separator($position: 'after');
+  // max-width: 800px;
+}
+.entry-header__content {
+  max-width: 950px;
+  margin-right: auto;
+  position: relative;
+}
+// .entry-header__title {
+  // display: flex;
+  // // justify-content: center;
+  // align-items: center;
+  // position: relative;
+  // z-index: 1; // <- Positions it on top of next/previous nav container
+// }
+.entry-header__title-heading {
+   margin-bottom: .7
+}
+.entry-header__context {
+  font-size: .9em;
+  // @include context-link();
+    // Prevents context becoming full width and thus occluding next/previous post buttons
+    // .entry-header__context {
+      align-self: flex-start;
+      margin-left: 0;
+      margin-right: auto;
+    // }
+  // justify-content: center;
+  z-index: 1; // <- Positions it on top of next/previous nav container
+
+  & > a {
+    position: relative;
+    left: -.3em; // <- Visually centers it in the entry-header
+  }
+}
+
+
+/******************************************
+Entry Header: Nav 
+- ie. next/previous post buttons
+******************************************/
+.entry-header__nav {
+  float: right;
+  font-size: .8rem;
+  position: relative;
+  top: .4rem;
+  // margin-left: 0;
+  // position: absolute;
+  // top: 50%;
+  // transform: translateY(-50%);
+  // width: 100%;
+  // left: 0;
+  z-index: 0; // <- Sits it below the other entry-header elements so they are still selectable
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  right: 0;
+
+    & > span:last-child {
+      margin-left: .6em;
+    }
+
+}
+.entry-header__nav-item {
+  // vars:
+  $post-nav__font-size: 1.1em;
+  $post-nav__size: 1.6em;
+  $post-nav__border-weight: $post-nav__font-size * 0.06;
+
+  font-size: $post-nav__font-size;
+  color: #99ACBB;
+
+  & > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $post-nav__size;
+    height: $post-nav__size;
+    border-radius: $post-nav__size;
+    border: $post-nav__border-weight solid #99ACBB;
+    transition: background-color 150ms, color 150ms, border 150ms;
+
+    &:hover {
+      background-color: $color__primary;
+      color: #ffffff;
+      border-color: $color__primary;
+    }
+  }
+}
+.entry-header__nav-item.-previous {
+  float: left;
+
+  & > a:before {
+    @include icon('chevron-thin-left', 1em, false);
+    position: relative;
+    left: -0.06em;
+  }
+}
+.entry-header__nav-item.-next {
+  float: right;
+
+  & > a:before {
+    @include icon('chevron-thin-right', 1em, false);
+    position: relative;
+    right: -0.06em;
+  }
+}
+
+
+/******************************************
+Entry Header: Media Queries
+******************************************/
+@include custom-breakpoint($max: 899px) {
+  // .entry-header__content {
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+}
+@include breakpoint(tablet) {
+  .entry-header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 850px;
+  }
+  // .entry-header__nav {
+    // display: flex;
+    // justify-content: flex-end;
+    // align-items: center;
+    // right: 0;
+
+      // & > span:last-child {
+      //   margin-left: .6em;
+      // }
+  // }
+  // .entry-header {
+  //   text-align: left;
+  // }
+
+}
+@include breakpoint(phone) {
+  .entry-header__title-heading {
+    font-size: 2.5em;
+  }
+  .entry-header__context {
+    margin-left: 0;
+  }
+  // .entry-header__nav {
+    // display: flex;
+    // justify-content: flex-end;
+    // align-items: center;
+    // right: 0;
+
+      // & > span:last-child {
+      //   margin-left: .6em;
+      // }
+  // }
+  // .entry-header {
+  //   text-align: left;
+  // }
+}
+

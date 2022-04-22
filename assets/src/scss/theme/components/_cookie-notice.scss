@@ -1,0 +1,78 @@
+/******************************************
+Cookie Notice
+******************************************/
+.cookie-notice {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  // height: fit-content;
+  // left: -10px;
+  background: #ffffff;
+  color: #ffffff;
+  opacity: 1;
+  border-style: solid;
+  z-index: 9999;
+  box-shadow: 0px 0px 20px -6px rgba(36, 47, 66, .31);
+
+  opacity: 0;
+  transform: translateX(0);
+  transform: translate3d(0, 10%, 0);
+  will-change: opacity, transform; // <- Smoother opacity transition in Chrome
+  transition: opacity 300ms; // <-fallback for Opera mini, doesn't support transform
+  transition: transform 300ms, opacity 300ms;
+
+  &[data-active="true"] {
+    opacity: 1;
+    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  &[data-cookie-notice="vibrating"] > div {
+    animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  
+    @keyframes shake {
+      10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+      
+      20%, 80% {
+        transform: translate3d(3px, 0, 0);
+      }
+    
+      30%, 50%, 70% {
+        transform: translate3d(-6px, 0, 0);
+      }
+    
+      40%, 60% {
+        transform: translate3d(6px, 0, 0);
+      }
+    }
+  }
+}
+.cookie-notice__overlay {
+  background: #242f42;
+  opacity: 0 ;
+  width: 100% ;
+  position: fixed;
+  height: 100% ;
+  top: 0;
+  left: 0 ;
+  z-index: 9996;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@include breakpoint(large-desktop desktop) {
+  .cookie-notice {
+    & .col-l-10 {
+      flex: 1;
+    }
+    & .col-l-2 {
+      // width: 20%;
+      min-width: 200px;
+      // min-width: 200px;
+    }
+  }
+}

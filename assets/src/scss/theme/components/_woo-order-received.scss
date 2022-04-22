@@ -1,0 +1,14 @@
+
+/******************************************
+Custom Woocommerce - Order Received 
+(Photo Restoration order thank you page)
+******************************************/
+.order-received__header {
+  margin-bottom: 2rem;
+}
+.order-received__order-summary-heading {
+  &[data-accordion-toggle]:after {
+    top: 0.25em;
+    font-size: 0.7em !important;
+  }
+}

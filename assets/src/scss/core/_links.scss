@@ -1,0 +1,75 @@
+/******************************************
+Links
+******************************************/
+// $link-exception-classes: (
+//   ".link-primary", 
+//   ".link-secondary", 
+//   ".link-neutral", 
+//   ".image-link", 
+//   ".button", 
+//   ".quote__link", 
+//   ".link-custom"
+// );
+
+// $exception-classes: generate-link-style-exceptions($link-exception-classes);
+// #{$exception-classes}
+a {
+  @include link(
+    $color: inherit,
+    $decoration: underline,
+    $hover-color: $color__link-hover
+  );
+}
+article > p a,
+article li a {
+  @include link(
+    $color: $color__link-primary,
+    $decoration: none,
+    $hover-color: $color__link-hover
+  );
+}
+.link-primary {
+  @include link(
+    $color: $color__link-primary,
+    $decoration: none,
+    $hover-color: $color__link-hover,
+    // $hover-decoration: none
+  );
+}
+.link-secondary {
+  @include link(
+    $color: $color__link-secondary,
+    $decoration: underline,
+    $hover-color: $color__link-hover
+  );
+}
+.link-neutral {
+  @include link(
+    $color: $color__link-neutral,
+    $decoration: underline,
+    $hover-color: $color__link-hover
+  );
+}
+.link-light {
+  @include link(
+    $color: $color__link-light,
+    $decoration: underline,
+    $hover-color: $color__link-hover
+  );
+}
+.link-dark {
+  @include link(
+    $color: $color__link-dark,
+    $decoration: underline,
+    $hover-color: $color__link-hover
+  );
+}
+.link-inherit {
+  @include link(
+    $color: inherit,
+    $decoration: underline,
+    $hover-color: $color__link-hover
+  );
+}
+
+

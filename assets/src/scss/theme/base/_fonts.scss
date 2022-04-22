@@ -1,0 +1,176 @@
+/******************************************
+Theme Fonts
+******************************************/
+/******************************************
+Literata
+******************************************/
+// 300
+@font-face {
+  font-family: 'Literata';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Literata Light'), local('Literata-Light'),
+       font-path('literata', 'Literata-Light.woff2', 'woff2'), /* Super Modern Browsers */
+       font-path('literata', 'Literata-Light.woff', 'woff'), /* Modern Browsers */
+
+      //  font-path('literata', 'Literata-Light.ttf', 'truetype'), /* Safari, Android, iOS */
+      //  font-path('literata', 'Literata-Light.eot'), /* IE9 Compat Modes */
+      //  font-path('literata', 'Literata-Light.eot?#iefix', 'embedded-opentype'), /* IE6-IE8 */
+      //  font-path('literata', 'Literata-Light.svg#Literata-Regular', 'svg'); /* Legacy iOS */
+      
+}
+// 400
+@font-face {
+  font-family: 'Literata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Literata'), local('Literata'),
+       font-path('literata', 'Literata-Regular.woff2', 'woff2'), /* Super Modern Browsers */
+       font-path('literata', 'Literata-Regular.woff', 'woff'), /* Modern Browsers */
+
+      //  font-path('literata', 'Literata-Regular.ttf', 'truetype'), /* Safari, Android, iOS */
+      //  font-path('literata', 'Literata-Regular.eot'), /* IE9 Compat Modes */
+      //  font-path('literata', 'Literata-Regular.eot?#iefix', 'embedded-opentype'), /* IE6-IE8 */
+      //  font-path('literata', 'Literata-Regular.svg#Literata-Regular', 'svg'); /* Legacy iOS */
+      
+}
+// 400 Italic
+@font-face {
+  font-family: 'Literata';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Literata Italic'), local('Literata-Italic'),
+       font-path('literata', 'Literata-Italic.woff2', 'woff2'), /* Super Modern Browsers */
+       font-path('literata', 'Literata-Italic.woff', 'woff'), /* Modern Browsers */
+
+      //  font-path('literata', 'Literata-Italic.ttf', 'truetype'), /* Safari, Android, iOS */
+      //  font-path('literata', 'Literata-Italic.eot'), /* IE9 Compat Modes */
+      //  font-path('literata', 'Literata-Italic.eot?#iefix', 'embedded-opentype'), /* IE6-IE8 */
+      //  font-path('literata', 'Literata-Italic.svg#Literata-Italic', 'svg'); /* Legacy iOS */
+}
+//  600
+@font-face {
+  font-family: 'Literata';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Literata SemiBold'), local('Literata-SemiBold'),
+       font-path('literata', 'Literata-SemiBold.woff2', 'woff2'), /* Super Modern Browsers */
+       font-path('literata', 'Literata-SemiBold.woff', 'woff'), /* Modern Browsers */
+       
+//        font-path('literata', 'Literata-Bold.ttf', 'truetype'), /* Safari, Android, iOS */
+//        font-path('literata', 'Literata-Bold.eot'), /* IE9 Compat Modes */
+//        font-path('literata', 'Literata-Bold.eot?#iefix', 'embedded-opentype'), /* IE6-IE8 */
+//        font-path('literata', 'Literata-Bold.svg#Literata-Bold', 'svg'); /* Legacy iOS */
+}
+
+
+
+/******************************************
+Nunito
+******************************************/
+// 400
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito'), local('Nunito'),
+       font-path('nunito', 'Nunito-Regular.woff2', 'woff2'), /* Super Modern Browsers */
+       font-path('nunito', 'Nunito-Regular.woff', 'woff'), /* Modern Browsers */
+
+      //  font-path('nunito', 'Nunito-Regular.ttf', 'truetype'), /* Safari, Android, iOS */
+      //  font-path('nunito', 'Nunito-Regular.eot'), /* IE9 Compat Modes */
+      //  font-path('nunito', 'Nunito-Regular.eot?#iefix', 'embedded-opentype'), /* IE6-IE8 */
+      //  font-path('nunito', 'Nunito-Regular.svg#Nunito-Regular', 'svg'); /* Legacy iOS */
+      
+}
+// 400 Italic
+@font-face {
+  font-family: 'Nunito';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Nunito Italic'), local('Nunito-Italic'),
+       font-path('nunito', 'Nunito-Italic.woff2', 'woff2'), /* Super Modern Browsers */
+       font-path('nunito', 'Nunito-Italic.woff', 'woff'), /* Modern Browsers */
+
+      //  font-path('nunito', 'Nunito-Italic.ttf', 'truetype'), /* Safari, Android, iOS */
+      //  font-path('nunito', 'Nunito-Italic.eot'), /* IE9 Compat Modes */
+      //  font-path('nunito', 'Nunito-Italic.eot?#iefix', 'embedded-opentype'), /* IE6-IE8 */
+      //  font-path('nunito', 'Nunito-Italic.svg#Nunito-Italic', 'svg'); /* Legacy iOS */
+}
+//  700
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito Bold'), local('Nunito-Bold'),
+       font-path('nunito', 'Nunito-Bold.woff2', 'woff2'), /* Super Modern Browsers */
+       font-path('nunito', 'Nunito-Bold.woff', 'woff'), /* Modern Browsers */
+       
+      //  font-path('nunito', 'Nunito-Bold.ttf', 'truetype'), /* Safari, Android, iOS */
+      //  font-path('nunito', 'Nunito-Bold.eot'), /* IE9 Compat Modes */
+      //  font-path('nunito', 'Nunito-Bold.eot?#iefix', 'embedded-opentype'), /* IE6-IE8 */
+      //  font-path('nunito', 'Nunito-Bold.svg#Nunito-Bold', 'svg'); /* Legacy iOS */
+}
+
+
+/******************************************
+Source Sans Pro - 300 italic, 400, 400 italic, 700
+******************************************/
+// // 300 Italic
+// @font-face {
+//   font-family: 'Source Sans Pro';
+//   font-weight: 300;
+//   font-style: italic;
+//   src: font-path('source-sans-pro', 'SourceSansPro-LightItalic.eot');
+//   src: local('Source Sans Pro Light Italic'), local('Source-Sans-Pro-Light-Italic');
+//   src: font-path('source-sans-pro', 'SourceSansPro-LightItalic.woff2', 'woff2'),
+//        font-path('source-sans-pro', 'SourceSansPro-LightItalic.woff', 'woff'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-LightItalic.ttf', 'truetype'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-LightItalic.eot?#iefix', 'embedded-opentype'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-LightItalic.svg#SourceSansPro-LightItalic', 'svg');
+
+// }
+// // 400
+// @font-face {
+//   font-family: 'Source Sans Pro';
+//   font-weight: 400;
+//   font-weight: normal;
+//   font-style: normal;
+//   src: font-path('source-sans-pro', 'SourceSansPro-Regular.eot');
+//   src: local('Source Sans Pro'), local('Source-Sans-Pro');
+//   src: font-path('source-sans-pro', 'SourceSansPro-Regular.woff2', 'woff2'),
+//        font-path('source-sans-pro', 'SourceSansPro-Regular.woff', 'woff'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-Regular.ttf', 'truetype'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-Regular.eot?#iefix', 'embedded-opentype'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-Regular.svg#SourceSansPro-Regular', 'svg');
+
+// }
+// // 400 Italic
+// @font-face {
+//   font-family: 'Source Sans Pro';
+//   font-weight: 400;
+//   font-style: italic;
+//   src: font-path('source-sans-pro', 'SourceSansPro-Italic.eot');
+//   src: local('Source Sans Pro Italic'), local('Source-Sans-Pro-Italic');
+//   src: font-path('source-sans-pro', 'SourceSansPro-Italic.woff2', 'woff2'),
+//        font-path('source-sans-pro', 'SourceSansPro-Italic.woff', 'woff'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-Italic.ttf', 'truetype'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-Italic.eot?#iefix', 'embedded-opentype'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-Italic.svg#SourceSansPro-Italic', 'svg');
+
+// }
+// // 700
+// @font-face {
+//   font-family: 'Source Sans Pro';
+//   font-weight: 700;
+//   font-weight: bold;
+//   font-style: normal;
+//   src: font-path('source-sans-pro', 'SourceSansPro-Bold.eot');
+//   src: local('Source Sans Pro Bold'), local('Source-Sans-Pro-Bold');
+//   src: font-path('source-sans-pro', 'SourceSansPro-Bold.woff2','woff2'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-Bold.woff', 'woff'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-Bold.eot?#iefix', 'embedded-opentype'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-Bold.ttf', 'truetype'),
+//       //  font-path('source-sans-pro', 'SourceSansPro-Bold.svg#SourceSansPro-Bold', 'svg');
+
+// }

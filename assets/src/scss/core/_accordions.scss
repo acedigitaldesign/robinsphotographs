@@ -1,0 +1,26 @@
+/******************************************
+Accordions
+******************************************/
+[data-accordion-toggle] {
+  cursor: pointer;
+  position: relative;
+  padding-right: 1.5em;
+  transition: color 150ms;
+  &:after {
+    @include icon('triangle-pointer-right', 1em, false);
+    position: absolute;
+    right: 0;
+    transform:rotate(90deg);
+    top: .6em;
+    font-size: .85em!important;
+    opacity: .2;
+  }
+}
+[data-accordion="open"] {
+  [data-accordion-toggle] {
+    color: $color__dark;
+    &:after {
+      transform:rotate(-90deg);
+    }
+  }
+}

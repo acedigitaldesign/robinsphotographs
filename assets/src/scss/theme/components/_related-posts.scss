@@ -1,0 +1,24 @@
+.related-posts__header {
+  display: flex;
+  justify-content: space-between;
+}
+.related-posts__heading {
+  font-size: 1.2em;
+  font-family: $font-family__body;
+  font-weight: 700;
+  margin-bottom: .8em;
+}
+.related-posts__posts {
+  clear: both;
+}
+.related-posts__link {
+  font-size: .9em;
+  @include link(
+    $decoration: none
+  );
+}
+@include custom-breakpoint($max: 399px) {
+  .related-posts__link {
+    display: none;
+  }
+}

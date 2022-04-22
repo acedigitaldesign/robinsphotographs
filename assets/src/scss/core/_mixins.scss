@@ -1,0 +1,392 @@
+/******************************************
+Link Mixins
+******************************************/ 
+@mixin link(
+  $color: inherit, 
+  $decoration: none, 
+  $hover-color: inherit, 
+  $hover-decoration: underline,
+  $icon: false) {
+
+  // Styles
+  color: $color;
+  text-decoration: $decoration;
+
+    &:visited,
+    &:link,
+    &:focus {
+      color: $color;
+      text-decoration: $decoration;
+    }
+    &:active,
+    &:hover {
+      color: $hover-color;
+      text-decoration: $hover-decoration;
+    }
+    
+    // @if $icon {
+    //   &:after {
+    //     @include icon($icon, $icon-size: .6em, $vertical-adjust: false);
+    //     display: inline-block;
+    //     position: relative;
+    //     top: -.1em;
+    //     margin-left: .5em;
+    //   }
+    // }
+}
+
+// Removes default link styles
+// Used on buttons and other custom styled links etc to remove default a-tag styles
+// very useful!
+@mixin link-unstyled {
+  color: inherit;
+  text-decoration: inherit;
+
+    &:visited,
+    &:link,
+    &:focus {
+      color: inherit;
+      text-decoration: inherit;
+    }
+    &:active,
+    &:hover {
+      color: inherit;
+      text-decoration: inherit;
+    }
+}
+
+/******************************************
+Browser support mixin
+******************************************/ 
+@mixin browser-support($ie: 'null', $edge: 'null', $galaxyTab: 'null') {
+  @if $ie != 'null' {
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      @content;
+    }
+  }
+  @if $edge != 'null' {
+    @supports (-ms-ime-align: auto) {
+    
+      @content;
+    }
+  }
+  @if $galaxyTab != 'null' {
+    @media 
+      (min-device-width: 800px) 
+      and (max-device-width: 1280px)
+      and (max-resolution: 192dpi)
+      and (-webkit-min-device-pixel-ratio: 1) 
+      // and (orientation : landscape) 
+      {
+        @content;
+    }
+  }
+  
+}
+
+
+/******************************************
+Icon mixin
+******************************************/ 
+@mixin icon($icon-name, $icon-size: 1em, $vertical-adjust: 'auto') {
+  font-family: 'ace-icons';
+  content: map-get($icon-map, $icon-name);
+  font-size: $icon-size;
+  
+  @if $vertical-adjust != false {
+    @if $vertical-adjust == 'auto' {
+      vertical-align: middle;
+      position: relative;
+      top: -5px;
+    }
+    @else {
+      position: relative;
+      top: $vertical-adjust;
+    }
+  }
+
+}
+
+
+/******************************************
+Box shadow mixin
+******************************************/ 
+@mixin box-shadow($offset-x: 0, $offset-y: 0, $blur: 5em, $spread-radius: 0, $color: rgba(0,0,0,0.25)) {
+  box-shadow: $offset-x $offset-y $blur $spread-radius $color
+}
+
+
+
+/******************************************
+Media Queries Mixins
+******************************************/ 
+$media-queries : (
+    large-desktop : "only screen and (min-width: 1441px)",
+    desktop       : "only screen and (min-width: 1025px) and (max-width: 1440px)",
+    tablet        : "only screen and (min-width: 769px) and (max-width: 1024px)",
+    phone         : "only screen and (min-width: 540px) and (max-width: 768px)",
+    small-phone   : "only screen and (max-width: 539px)",
+    retina2       : "only screen and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)",
+    retina3       : "only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 288dpi)",
+    landscape     : "screen and (orientation:landscape) ",    
+    portrait      : "screen and (orientation:portrait) "
+);
+
+
+@mixin breakpoint($breakpoints) {
+  $conditions : ();
+  @each $breakpoint in $breakpoints {
+    // If the key exists in the map
+    @if map-has-key($media-queries, $breakpoint) {
+      $conditions: append(
+        $conditions,
+        #{unquote(map-get($media-queries, $breakpoint))},
+        comma
+      );
+    }
+    @else {
+      @warn "Breakpoint `#{$breakpoint}` is invalid. Please make sure it is defined in `$media-queries` map.";
+    }
+  }
+
+  @media #{$conditions} {
+    @content;
+  }
+}
+
+@mixin custom-breakpoint($min: 0, $max: 0) {
+  $query: "all" !default;
+  @if $min != 0 and $max != 0 { 
+    $query: "only screen and (min-width: #{$min}) and (max-width: #{$max})"; 
+  }
+  @else if $min != 0 and $max == 0 { 
+    $query: "only screen and (min-width: #{$min})"; 
+  }
+  @else if $min == 0 and $max != 0 { 
+    $query: "only screen and (max-width: #{$max})"; 
+  }
+  @media #{$query} { 
+    @content;
+  }
+}
+
+
+/******************************************
+Remove device 'tap' styles
+// ie. the auto style that happens upon touch on devices 
+******************************************/
+@mixin remove-tap-style() {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/******************************************
+Clear fix 
+// eg. For containers of floating children
+******************************************/
+@mixin clearfix() {
+  &:after{
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+/******************************************
+Button styles
+******************************************/ 
+@mixin button-base-styles() {
+	font-family: 'Lato';
+	letter-spacing: .03em;
+	line-height: 1.3;
+	border-radius: 200px;
+	position: relative;
+	text-transform: uppercase;
+	font-weight: 700;
+	width: 100%;
+	box-sizing: border-box;
+		@include browser-support($ie: true) {
+			height: 0; // <- IE flexbox bug fix
+		}
+	min-height: 2.9em;
+	display: flex;
+	align-items: center;
+	line-height: 1.05;
+	cursor: pointer;
+	transition: all 150ms;
+	border: none;
+	outline: none;
+	appearance: none;
+	
+	// NB. The <button> and <fieldset> elements can't be flex containers in Safari and old ipad browsers...
+	// Therefore if these styles are a applied to a button tag, justify-content: center won't work
+	// The solution is simply to use <a> tags instead of buttons...
+	// See this article: https://stackoverflow.com/questions/33084810/how-is-possible-that-display-flex-and-align-items-center-do-not-work-anymo
+
+}
+
+$button-sizes: (
+	'small': (
+		font-size: 0.8rem,
+	),
+	'regular': (
+		font-size: 0.9rem,
+	),
+	'large': (
+		font-size: 1rem,
+	)
+);
+/******************************************
+Button icon styles
+******************************************/ 
+@mixin button-icon-base-styles() {
+	font-family: "ace-icons";
+	font-weight: 900;
+	font-size: 0.9em;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+
+/******************************************
+Bullet lists
+******************************************/
+@mixin bullet-list {
+  counter-reset: numbered-list-counter;
+  list-style: none;
+  position: relative;
+}
+
+@mixin bullet-item($size: 1.2rem, $color: white, $numbered: false, $icon: '-', $bullet-wrap: false, $bg-circle: true, $top: 0) {
+  @if ($numbered) { counter-increment: numbered-list-counter; }
+  @if ($bullet-wrap) { padding-left: 0; }
+  @else { padding-left: $size * (1.5 + 0.5); }
+  position: relative;   
+   
+  &::before {
+    @if ($numbered) { content: counter(numbered-list-counter) "."; }
+    @else { content: $icon }
+    @if ($bg-circle) { 
+      border-radius: 50%; 
+    }
+    @if ($bullet-wrap) { 
+      position: relative; 
+      float: left;
+      top: $top }
+    @else { 
+      position: absolute; 
+      left: 0;
+      top: $top;
+    }
+    color: #000;
+    background-color: $color;
+    text-align: center;
+    font-size: $size;
+    line-height: 1.2em;
+    margin-right: .5em;
+    min-width: 1.5em;
+    width: 1.5em;
+    height: 1.5em;
+    padding-top: .15em;
+    padding-left: .15em;
+
+  }
+}
+
+@mixin separator($justify: 'left', $position: 'before', $color: $color__separator) {
+  position: relative;
+
+  @if $position == 'before' {
+    margin-top: 3rem;
+    &::before {
+      content: "";
+      position: absolute;
+      background-repeat: no-repeat;
+      width:50px;
+      height: 4px;
+      top: -2rem;
+      // z-index: 1;
+      // @if $justify == 'left' {
+      //   left: 0;
+      // }
+      // @if $justify == 'center' {
+      //   left: 50%;
+      //   transform: translateX(-50%);
+      // }
+      background-image: inline-svg('<svg width="50" height="4" viewBox="0 0 51 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;"><path d="M0.148,1.926l49.852,0" style="fill:none;stroke:' + $color + ';stroke-width:3.5px;"/></svg>');
+  
+    }
+  }
+  @else {
+    margin-bottom: 3rem;
+    &::after {
+      content: "";
+      position: absolute;
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 4px;
+      bottom: -2rem;
+      // z-index: 1;
+      // @if $justify == 'left' {
+      //   left: 0;
+      // }
+      // @if $justify == 'center' {
+      //   left: 50%;
+      //   transform: translateX(-50%);
+      // }
+      background-image: inline-svg('<svg width="50" height="4" viewBox="0 0 51 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;"><path d="M0.148,1.926l49.852,0" style="fill:none;stroke:' + $color + ';stroke-width:3.5px;"/></svg>');
+  
+    }
+  }
+
+
+  
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   background-repeat: no-repeat;
+  //   width:50px;
+  //   height: 4px;
+  //   top: -2rem;
+  //   @if $justify == 'left' {
+  //     left: 0;
+  //   }
+  //   @if $justify == 'center' {
+  //     left: 50%;
+  //     transform: translateX(-50%);
+  //   }
+  //   background-image: inline-svg('<svg width="50" height="4" viewBox="0 0 51 4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-miterlimit:10;"><path d="M0.148,1.926l49.852,0" style="fill:none;stroke:' + $color__separator + ';stroke-width:3.5px;"/></svg>');
+
+  // }
+}
+
+
+
+/******************************************
+Resource Book Thumbnails
+- used to make a tags that wrap around li or imgs etc wrap tightly around child
+- sometimes the issue is seen on devices and tapping on image link - the select area is bigger than image
+******************************************/
+@mixin image-link {
+  height: 100%;
+  line-height: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+@mixin image-rendering {
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */
+}
+
+// @mixin border-radius {
+//   overflow: hidden;
+//   border-radius: 6px;
+// }
